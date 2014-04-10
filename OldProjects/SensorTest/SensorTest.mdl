@@ -1,5 +1,5 @@
 Model {
-  Name			  "armTemplate"
+  Name			  "SensorTest"
   Version		  8.2
   MdlSubVersion		  0
   SavedCharacterEncoding  "windows-1252"
@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.59"
+    ComputedModelVersion    "1.61"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,7 +31,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [338.0, 105.0, 1066.0, 738.0]
+      Location		      [350.0, 101.0, 1066.0, 738.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -57,7 +57,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[1016.0, 564.0]
 	ZoomFactor		[1.0]
-	Offset			[52.000000000000455, 30.366666666666788]
+	Offset			[52.000000000000455, 72.391661308209223]
       }
     }
   }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "LukePH"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Apr 10 08:10:34 2014"
-  RTWModifiedTimeStamp	  318427673
-  ModelVersionFormat	  "1.%<AutoIncrement:59>"
+  LastModifiedDate	  "Thu Apr 03 12:06:44 2014"
+  RTWModifiedTimeStamp	  318427602
+  ModelVersionFormat	  "1.%<AutoIncrement:61>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -111,12 +111,12 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "armTemplate"
+    model_		    "SensorTest"
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "armTemplate"
+      Cell		      "SensorTest"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -799,30 +799,6 @@ Model {
       PreserveConstantTs      off
     }
     Block {
-      BlockType		      DiscreteIntegrator
-      IntegratorMethod	      "Integration: Forward Euler"
-      gainval		      "1.0"
-      ExternalReset	      "none"
-      InitialConditionSource  "internal"
-      InitialCondition	      "0"
-      InitialConditionMode    "State and output"
-      SampleTime	      "1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	off
-      LimitOutput	      off
-      UpperSaturationLimit    "inf"
-      LowerSaturationLimit    "-inf"
-      ShowSaturationPort      off
-      ShowStatePort	      off
-      IgnoreLimit	      off
-      StateMustResolveToSignalObject off
-      RTWStateStorageClass    "Auto"
-    }
-    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -836,24 +812,6 @@ Model {
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Inport
-      Port		      "1"
-      OutputFunctionCall      off
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: auto"
-      LockScale		      off
-      BusOutputAsStruct	      off
-      PortDimensions	      "-1"
-      VarSizeSig	      "Inherit"
-      SampleTime	      "-1"
-      SignalType	      "auto"
-      SamplingMode	      "auto"
-      LatchByDelayingOutsideSignal off
-      LatchInputForFeedbackSignals off
-      Interpolate	      on
     }
     Block {
       BlockType		      Mux
@@ -879,29 +837,6 @@ Model {
       SourceOfInitialOutputValue "Dialog"
       OutputWhenDisabled      "held"
       InitialOutput	      "[]"
-    }
-    Block {
-      BlockType		      Product
-      Inputs		      "2"
-      Multiplication	      "Element-wise(.*)"
-      CollapseMode	      "All dimensions"
-      CollapseDim	      "1"
-      InputSameDT	      on
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Zero"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      RelationalOperator
-      Operator		      ">="
-      InputSameDT	      on
-      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
-      ZeroCross		      on
-      SampleTime	      "-1"
     }
     Block {
       BlockType		      Step
@@ -937,25 +872,10 @@ Model {
       GeneratePreprocessorConditionals off
       ContentPreviewEnabled   off
     }
-    Block {
-      BlockType		      Switch
-      Criteria		      "u2 >= Threshold"
-      Threshold		      "0"
-      InputSameDT	      on
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      ZeroCross		      on
-      SampleTime	      "-1"
-      AllowDiffInputSizes     off
-    }
   }
   System {
-    Name		    "armTemplate"
-    Location		    [338, 105, 1404, 843]
+    Name		    "SensorTest"
+    Location		    [350, 101, 1416, 839]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -969,7 +889,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "109"
+    SIDHighWatermark	    "104"
     Block {
       BlockType		      Reference
       Name		      "Analog input"
@@ -1011,238 +931,10 @@ Model {
     }
     Block {
       BlockType		      SubSystem
-      Name		      "Pulse Gen"
-      SID		      "71"
-      Ports		      [2, 1]
-      Position		      [155, 436, 255, 489]
-      ZOrder		      94
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      System {
-	Name			"Pulse Gen"
-	Location		[352, 154, 1722, 946]
-	Open			off
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	Block {
-	  BlockType		  Inport
-	  Name			  "Pulse Width (sec)"
-	  SID			  "72"
-	  Position		  [120, 288, 150, 302]
-	  ZOrder		  96
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "Pulse Trigger"
-	  SID			  "73"
-	  Position		  [25, 118, 55, 132]
-	  ZOrder		  89
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Baseline"
-	  SID			  "74"
-	  Position		  [155, 145, 185, 175]
-	  ZOrder		  93
-	  Value			  "0"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Baseline1"
-	  SID			  "75"
-	  Position		  [580, 85, 610, 115]
-	  ZOrder		  99
-	  Value			  "0"
-	}
-	Block {
-	  BlockType		  DiscreteIntegrator
-	  Name			  "Discrete-Time\nIntegrator"
-	  SID			  "76"
-	  Ports			  [1, 1]
-	  Position		  [385, 109, 420, 141]
-	  ZOrder		  100
-	  SampleTime		  "Ts"
-	  ICPrevOutput		  "DiscIntNeverNeededParam"
-	  ICPrevScaledInput	  "DiscIntNeverNeededParam"
-	}
-	Block {
-	  BlockType		  Product
-	  Name			  "Product"
-	  SID			  "77"
-	  Ports			  [2, 1]
-	  Position		  [235, 247, 265, 278]
-	  ZOrder		  91
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  RndMeth		  "Floor"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Pulse Amplitude"
-	  SID			  "78"
-	  Position		  [65, 50, 95, 80]
-	  ZOrder		  92
-	}
-	Block {
-	  BlockType		  RelationalOperator
-	  Name			  "Relational\nOperator"
-	  SID			  "79"
-	  Ports			  [2, 1]
-	  Position		  [495, 117, 525, 148]
-	  ZOrder		  97
-	  InputSameDT		  off
-	  OutDataTypeStr	  "boolean"
-	}
-	Block {
-	  BlockType		  Switch
-	  Name			  "Switch"
-	  SID			  "80"
-	  Position		  [215, 105, 265, 145]
-	  ZOrder		  90
-	  Criteria		  "u2 > Threshold"
-	  InputSameDT		  off
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Switch
-	  Name			  "Switch1"
-	  SID			  "81"
-	  Position		  [655, 160, 705, 200]
-	  ZOrder		  98
-	  Criteria		  "u2 > Threshold"
-	  InputSameDT		  off
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "Pulse"
-	  SID			  "82"
-	  Position		  [790, 173, 820, 187]
-	  ZOrder		  88
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  ZOrder		  1
-	  SrcBlock		  "Pulse Trigger"
-	  SrcPort		  1
-	  DstBlock		  "Switch"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  2
-	  SrcBlock		  "Pulse Amplitude"
-	  SrcPort		  1
-	  Points		  [22, 0]
-	  Branch {
-	    ZOrder		    3
-	    Points		    [0, 190]
-	    DstBlock		    "Product"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    4
-	    Points		    [49, 0; 0, 45]
-	    DstBlock		    "Switch"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  ZOrder		  5
-	  SrcBlock		  "Baseline"
-	  SrcPort		  1
-	  Points		  [5, 0; 0, -20]
-	  DstBlock		  "Switch"
-	  DstPort		  3
-	}
-	Line {
-	  ZOrder		  6
-	  SrcBlock		  "Pulse Width (sec)"
-	  SrcPort		  1
-	  Points		  [37, 0; 0, -25]
-	  DstBlock		  "Product"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  7
-	  SrcBlock		  "Switch"
-	  SrcPort		  1
-	  Points		  [62, 0]
-	  Branch {
-	    ZOrder		    8
-	    Points		    [0, 70]
-	    DstBlock		    "Switch1"
-	    DstPort		    3
-	  }
-	  Branch {
-	    ZOrder		    9
-	    DstBlock		    "Discrete-Time\nIntegrator"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  ZOrder		  10
-	  SrcBlock		  "Product"
-	  SrcPort		  1
-	  Points		  [187, 0; 0, -125]
-	  DstBlock		  "Relational\nOperator"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  11
-	  SrcBlock		  "Relational\nOperator"
-	  SrcPort		  1
-	  Points		  [61, 0; 0, 45]
-	  DstBlock		  "Switch1"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  12
-	  SrcBlock		  "Baseline1"
-	  SrcPort		  1
-	  Points		  [19, 0; 0, 65]
-	  DstBlock		  "Switch1"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  13
-	  SrcBlock		  "Switch1"
-	  SrcPort		  1
-	  DstBlock		  "Pulse"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  14
-	  SrcBlock		  "Discrete-Time\nIntegrator"
-	  SrcPort		  1
-	  DstBlock		  "Relational\nOperator"
-	  DstPort		  1
-	}
-      }
-    }
-    Block {
-      BlockType		      SubSystem
       Name		      "Read Encoders"
       SID		      "64"
       Ports		      [0, 2]
-      Position		      [220, 149, 310, 211]
+      Position		      [210, 149, 300, 211]
       ZOrder		      91
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -1253,7 +945,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Read Encoders"
-	Location		[338, 105, 1404, 843]
+	Location		[350, 101, 1416, 839]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1472,10 +1164,10 @@ Model {
     Block {
       BlockType		      SubSystem
       Name		      "Set-up"
-      SID		      "99"
+      SID		      "22"
       Ports		      []
-      Position		      [135, 152, 180, 193]
-      ZOrder		      100
+      Position		      [150, 72, 195, 113]
+      ZOrder		      80
       BackgroundColor	      "blue"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -1486,7 +1178,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Set-up"
-	Location		[338, 105, 1404, 843]
+	Location		[350, 101, 1416, 839]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1502,7 +1194,7 @@ Model {
 	Block {
 	  BlockType		  SubSystem
 	  Name			  "AnalogSetUp"
-	  SID			  "100"
+	  SID			  "83"
 	  Ports			  []
 	  Position		  [30, 35, 100, 90]
 	  ZOrder		  96
@@ -1532,7 +1224,7 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "Analog input"
-	      SID		      "101"
+	      SID		      "84"
 	      Ports		      [0, 2]
 	      Position		      [40, 165, 175, 240]
 	      ZOrder		      30
@@ -1551,7 +1243,7 @@ Model {
 	    Block {
 	      BlockType		      Mux
 	      Name		      "Mux"
-	      SID		      "102"
+	      SID		      "85"
 	      Ports		      [2, 1]
 	      Position		      [210, 181, 215, 219]
 	      ZOrder		      32
@@ -1563,7 +1255,7 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "Scope (xPC) 1"
-	      SID		      "103"
+	      SID		      "86"
 	      Ports		      [1]
 	      Position		      [245, 170, 335, 230]
 	      ZOrder		      31
@@ -1572,7 +1264,7 @@ Model {
 	      SourceBlock	      "xpclib/Misc./Scope (xPC) "
 	      SourceType	      "xpcscopeblock"
 	      ContentPreviewEnabled   off
-	      scopeno		      "3"
+	      scopeno		      "4"
 	      scopetype		      "Target"
 	      autostart		      on
 	      viewmode		      "Graphical redraw"
@@ -1599,7 +1291,7 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "SetupAnalog"
-	      SID		      "104"
+	      SID		      "87"
 	      Ports		      []
 	      Position		      [40, 45, 175, 115]
 	      ZOrder		      36
@@ -1650,7 +1342,7 @@ Model {
 	Block {
 	  BlockType		  Reference
 	  Name			  "Digital output"
-	  SID			  "105"
+	  SID			  "4"
 	  Ports			  [32]
 	  Position		  [165, 137, 345, 483]
 	  ZOrder		  61
@@ -1668,7 +1360,7 @@ Model {
 	Block {
 	  BlockType		  Constant
 	  Name			  "Disable NST"
-	  SID			  "106"
+	  SID			  "3"
 	  Position		  [50, 250, 80, 280]
 	  ZOrder		  62
 	  Value			  "0"
@@ -1676,14 +1368,14 @@ Model {
 	Block {
 	  BlockType		  Constant
 	  Name			  "Do Not Zero"
-	  SID			  "107"
+	  SID			  "5"
 	  Position		  [50, 310, 80, 340]
 	  ZOrder		  63
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "Setup"
-	  SID			  "108"
+	  SID			  "2"
 	  Ports			  []
 	  Position		  [185, 24, 322, 98]
 	  ZOrder		  59
@@ -1704,38 +1396,38 @@ Model {
 	Block {
 	  BlockType		  Step
 	  Name			  "Zero On Start"
-	  SID			  "109"
+	  SID			  "104"
 	  Position		  [50, 370, 80, 400]
 	  ZOrder		  98
 	  Time			  "2"
 	  SampleTime		  "0"
 	}
 	Line {
-	  ZOrder		  1
+	  ZOrder		  2
 	  SrcBlock		  "Disable NST"
 	  SrcPort		  1
 	  Points		  [49, 0; 0, 50]
 	  Branch {
-	    ZOrder		    2
+	    ZOrder		    5
 	    Points		    [0, 20]
 	    DstBlock		    "Digital output"
 	    DstPort		    19
 	  }
 	  Branch {
-	    ZOrder		    3
+	    ZOrder		    4
 	    DstBlock		    "Digital output"
 	    DstPort		    17
 	  }
 	}
 	Line {
-	  ZOrder		  4
+	  ZOrder		  3
 	  SrcBlock		  "Do Not Zero"
 	  SrcPort		  1
 	  DstBlock		  "Digital output"
 	  DstPort		  18
 	}
 	Line {
-	  ZOrder		  5
+	  ZOrder		  11
 	  SrcBlock		  "Zero On Start"
 	  SrcPort		  1
 	  Points		  [42, 0; 0, -40]
@@ -1743,34 +1435,6 @@ Model {
 	  DstPort		  20
 	}
       }
-    }
-    Line {
-      ZOrder		      99
-      SrcBlock		      "Analog input"
-      SrcPort		      1
-      DstBlock		      "Mux"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      100
-      SrcBlock		      "Analog input"
-      SrcPort		      2
-      DstBlock		      "Mux"
-      DstPort		      2
-    }
-    Line {
-      ZOrder		      101
-      SrcBlock		      "Analog input"
-      SrcPort		      3
-      DstBlock		      "Mux"
-      DstPort		      3
-    }
-    Line {
-      ZOrder		      102
-      SrcBlock		      "Analog input"
-      SrcPort		      4
-      DstBlock		      "Mux"
-      DstPort		      4
     }
     Line {
       ZOrder		      103
@@ -1797,9 +1461,37 @@ Model {
       ZOrder		      113
       SrcBlock		      "Read Encoders"
       SrcPort		      2
-      Points		      [35, 0]
+      Points		      [20, 0; 0, -10]
       DstBlock		      "Mux1"
       DstPort		      2
+    }
+    Line {
+      ZOrder		      114
+      SrcBlock		      "Analog input"
+      SrcPort		      3
+      DstBlock		      "Mux"
+      DstPort		      3
+    }
+    Line {
+      ZOrder		      115
+      SrcBlock		      "Analog input"
+      SrcPort		      4
+      DstBlock		      "Mux"
+      DstPort		      4
+    }
+    Line {
+      ZOrder		      116
+      SrcBlock		      "Analog input"
+      SrcPort		      2
+      DstBlock		      "Mux"
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      117
+      SrcBlock		      "Analog input"
+      SrcPort		      1
+      DstBlock		      "Mux"
+      DstPort		      1
     }
   }
 }
