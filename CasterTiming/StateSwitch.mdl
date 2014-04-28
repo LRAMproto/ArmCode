@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.10"
+    ComputedModelVersion    "1.40"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -30,7 +30,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [382.0, 139.0, 975.0, 608.0]
+      Location		      [439.0, 56.0, 975.0, 608.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -56,7 +56,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[925.0, 434.0]
 	ZoomFactor		[1.0]
-	Offset			[-14.56250259280182, 6.1999999999999886]
+	Offset			[-14.062507599591981, 34.0]
       }
     }
   }
@@ -66,9 +66,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "LukePH"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Apr 14 17:46:47 2014"
-  RTWModifiedTimeStamp	  319398406
-  ModelVersionFormat	  "1.%<AutoIncrement:10>"
+  LastModifiedDate	  "Wed Apr 16 21:56:21 2014"
+  RTWModifiedTimeStamp	  319551089
+  ModelVersionFormat	  "1.%<AutoIncrement:40>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -111,7 +111,7 @@ Model {
     $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "StateSwitch"
-    overrideMode_	    [0U]
+    overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
@@ -177,7 +177,7 @@ Model {
 	  $ObjectID		  8
 	  Version		  "1.13.1"
 	  StartTime		  "0.0"
-	  StopTime		  "2*pi"
+	  StopTime		  "6.4"
 	  AbsTol		  "auto"
 	  FixedStep		  ".05"
 	  InitialStep		  "auto"
@@ -866,23 +866,6 @@ Model {
       NonVirtualBus	      off
     }
     Block {
-      BlockType		      Outport
-      Port		      "1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: auto"
-      LockScale		      off
-      BusOutputAsStruct	      off
-      PortDimensions	      "-1"
-      VarSizeSig	      "Inherit"
-      SampleTime	      "-1"
-      SignalType	      "auto"
-      SamplingMode	      "auto"
-      SourceOfInitialOutputValue "Dialog"
-      OutputWhenDisabled      "held"
-      InitialOutput	      "[]"
-    }
-    Block {
       BlockType		      Scope
       ModelBased	      off
       TickLabels	      "OneTimeTick"
@@ -964,7 +947,7 @@ Model {
   }
   System {
     Name		    "StateSwitch"
-    Location		    [382, 139, 1357, 747]
+    Location		    [439, 56, 1414, 664]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -978,13 +961,13 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "43"
+    SIDHighWatermark	    "62"
     Block {
       BlockType		      Sum
       Name		      "Add"
       SID		      "40"
       Ports		      [2, 1]
-      Position		      [225, 117, 255, 148]
+      Position		      [255, 117, 285, 148]
       ZOrder		      27
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -1006,7 +989,7 @@ Model {
       Name		      "Arm Pos (rad)1"
       SID		      "41"
       Ports		      [0, 1]
-      Position		      [535, 240, 565, 270]
+      Position		      [385, 395, 415, 425]
       ZOrder		      28
       Amplitude		      ".1"
       Frequency		      "4*pi"
@@ -1017,7 +1000,7 @@ Model {
       Name		      "Compare\nTo Constant"
       SID		      "34"
       Ports		      [1, 1]
-      Position		      [110, 85, 165, 115]
+      Position		      [140, 85, 195, 115]
       ZOrder		      21
       LibraryVersion	      "1.285"
       SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
@@ -1033,7 +1016,7 @@ Model {
       Name		      "Compare\nTo Constant1"
       SID		      "37"
       Ports		      [1, 1]
-      Position		      [105, 155, 160, 185]
+      Position		      [135, 155, 190, 185]
       ZOrder		      24
       LibraryVersion	      "1.285"
       SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
@@ -1048,7 +1031,7 @@ Model {
       BlockType		      DataStoreMemory
       Name		      "Data Store\nMemory"
       SID		      "5"
-      Position		      [460, 20, 492, 50]
+      Position		      [490, 20, 522, 50]
       ZOrder		      5
       ReadBeforeWriteMsg      "warning"
       WriteAfterWriteMsg      "warning"
@@ -1059,41 +1042,14 @@ Model {
       Name		      "Data Store\nRead"
       SID		      "3"
       Ports		      [0, 1]
-      Position		      [20, 280, 50, 310]
+      Position		      [155, 305, 185, 335]
       ZOrder		      3
-    }
-    Block {
-      BlockType		      DataStoreWrite
-      Name		      "Data Store\nWrite1"
-      SID		      "19"
-      Ports		      [1]
-      Position		      [605, 135, 635, 165]
-      ZOrder		      12
-      ShowName		      off
-    }
-    Block {
-      BlockType		      DataStoreWrite
-      Name		      "Data Store\nWrite2"
-      SID		      "20"
-      Ports		      [1]
-      Position		      [695, 190, 725, 220]
-      ZOrder		      13
-      ShowName		      off
-    }
-    Block {
-      BlockType		      DataStoreWrite
-      Name		      "Data Store\nWrite3"
-      SID		      "21"
-      Ports		      [1]
-      Position		      [800, 240, 830, 270]
-      ZOrder		      15
-      ShowName		      off
     }
     Block {
       BlockType		      From
       Name		      "From"
       SID		      "6"
-      Position		      [485, 351, 525, 379]
+      Position		      [515, 351, 555, 379]
       ZOrder		      6
       Commented		      "on"
     }
@@ -1101,7 +1057,7 @@ Model {
       BlockType		      Goto
       Name		      "Goto"
       SID		      "7"
-      Position		      [410, 350, 450, 380]
+      Position		      [440, 350, 480, 380]
       ZOrder		      7
       Commented		      "on"
     }
@@ -1109,8 +1065,8 @@ Model {
       BlockType		      SubSystem
       Name		      "Hold Position"
       SID		      "22"
-      Ports		      [1, 1, 0, 0, 0, 0, 0, 1]
-      Position		      [680, 238, 780, 272]
+      Ports		      [1, 0, 0, 0, 0, 0, 0, 1]
+      Position		      [710, 238, 810, 272]
       ZOrder		      14
       TreatAsAtomicUnit	      on
       MinAlgLoopOccurrences   off
@@ -1122,7 +1078,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Hold Position"
-	Location		[568, 157, 1447, 765]
+	Location		[439, 56, 1414, 664]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1139,7 +1095,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "Spool Pos (rad)"
 	  SID			  "28"
-	  Position		  [185, 133, 215, 147]
+	  Position		  [170, 133, 200, 147]
 	  ZOrder		  8
 	  IconDisplay		  "Port number"
 	}
@@ -1152,18 +1108,19 @@ Model {
 	  ActionType		  "case"
 	}
 	Block {
-	  BlockType		  Outport
-	  Name			  "Cmd"
-	  SID			  "25"
-	  Position		  [460, 133, 490, 147]
-	  ZOrder		  -3
-	  IconDisplay		  "Port number"
+	  BlockType		  DataStoreWrite
+	  Name			  "Data Store\nWrite2"
+	  SID			  "46"
+	  Ports			  [1]
+	  Position		  [250, 125, 280, 155]
+	  ZOrder		  14
+	  ShowName		  off
 	}
 	Line {
-	  ZOrder		  2
+	  ZOrder		  6
 	  SrcBlock		  "Spool Pos (rad)"
 	  SrcPort		  1
-	  DstBlock		  "Cmd"
+	  DstBlock		  "Data Store\nWrite2"
 	  DstPort		  1
 	}
       }
@@ -1173,7 +1130,7 @@ Model {
       Name		      "Mux"
       SID		      "42"
       Ports		      [2, 1]
-      Position		      [140, 260, 145, 295]
+      Position		      [170, 260, 175, 295]
       ZOrder		      29
       ShowName		      off
       Inputs		      "2"
@@ -1183,8 +1140,8 @@ Model {
       BlockType		      SubSystem
       Name		      "Release"
       SID		      "15"
-      Ports		      [0, 1, 0, 0, 0, 0, 0, 1]
-      Position		      [605, 188, 675, 222]
+      Ports		      [0, 0, 0, 0, 0, 0, 0, 1]
+      Position		      [635, 188, 705, 222]
       ZOrder		      11
       TreatAsAtomicUnit	      on
       MinAlgLoopOccurrences   off
@@ -1196,7 +1153,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Release"
-	Location		[568, 157, 1447, 765]
+	Location		[439, 56, 1414, 664]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1218,26 +1175,26 @@ Model {
 	  ActionType		  "case"
 	}
 	Block {
-	  BlockType		  Constant
-	  Name			  "Constant"
-	  SID			  "17"
-	  Position		  [250, 70, 280, 100]
-	  ZOrder		  1
-	  Value			  "1.0"
+	  BlockType		  DataStoreWrite
+	  Name			  "Data Store\nWrite2"
+	  SID			  "20"
+	  Ports			  [1]
+	  Position		  [315, 120, 345, 150]
+	  ZOrder		  14
+	  ShowName		  off
 	}
 	Block {
-	  BlockType		  Outport
-	  Name			  "Cmd"
-	  SID			  "18"
-	  Position		  [325, 78, 355, 92]
-	  ZOrder		  -3
-	  IconDisplay		  "Port number"
+	  BlockType		  Constant
+	  Name			  "Realease Cmd"
+	  SID			  "60"
+	  Position		  [210, 120, 240, 150]
+	  ZOrder		  135
 	}
 	Line {
-	  ZOrder		  1
-	  SrcBlock		  "Constant"
+	  ZOrder		  8
+	  SrcBlock		  "Realease Cmd"
 	  SrcPort		  1
-	  DstBlock		  "Cmd"
+	  DstBlock		  "Data Store\nWrite2"
 	  DstPort		  1
 	}
       }
@@ -1246,8 +1203,8 @@ Model {
       BlockType		      SubSystem
       Name		      "Rest"
       SID		      "10"
-      Ports		      [0, 1, 0, 0, 0, 0, 0, 1]
-      Position		      [515, 133, 585, 167]
+      Ports		      [0, 0, 0, 0, 0, 0, 0, 1]
+      Position		      [545, 133, 615, 167]
       ZOrder		      10
       TreatAsAtomicUnit	      on
       MinAlgLoopOccurrences   off
@@ -1259,7 +1216,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Rest"
-	Location		[560, 133, 1592, 741]
+	Location		[439, 56, 1414, 664]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1284,23 +1241,24 @@ Model {
 	  BlockType		  Constant
 	  Name			  "Constant"
 	  SID			  "14"
-	  Position		  [250, 70, 280, 100]
+	  Position		  [150, 85, 180, 115]
 	  ZOrder		  1
 	  Value			  "0"
 	}
 	Block {
-	  BlockType		  Outport
-	  Name			  "Cmd"
-	  SID			  "13"
-	  Position		  [325, 78, 355, 92]
-	  ZOrder		  -3
-	  IconDisplay		  "Port number"
+	  BlockType		  DataStoreWrite
+	  Name			  "Data Store\nWrite1"
+	  SID			  "19"
+	  Ports			  [1]
+	  Position		  [225, 85, 255, 115]
+	  ZOrder		  13
+	  ShowName		  off
 	}
 	Line {
 	  ZOrder		  2
 	  SrcBlock		  "Constant"
 	  SrcPort		  1
-	  DstBlock		  "Cmd"
+	  DstBlock		  "Data Store\nWrite1"
 	  DstPort		  1
 	}
       }
@@ -1310,10 +1268,10 @@ Model {
       Name		      "Scope"
       SID		      "43"
       Ports		      [3]
-      Position		      [325, 293, 355, 327]
+      Position		      [355, 293, 385, 327]
       ZOrder		      30
       Floating		      off
-      Location		      [14, 190, 426, 554]
+      Location		      [14, 190, 429, 666]
       Open		      on
       NumInputPorts	      "3"
       List {
@@ -1333,8 +1291,8 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      off
-      YMin		      "-1~-0.1~-5"
-      YMax		      "4~0.1~5"
+      YMin		      "0~0~-0.525"
+      YMax		      "3.5~1~-0.475"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
@@ -1355,9 +1313,9 @@ Model {
       Name		      "Switch Case"
       SID		      "9"
       Ports		      [1, 3]
-      Position		      [425, 81, 525, 119]
+      Position		      [455, 81, 555, 119]
       ZOrder		      9
-      CaseConditions	      "{1,2}"
+      CaseConditions	      "{[0,1],2}"
     }
     Line {
       ZOrder		      1
@@ -1368,33 +1326,12 @@ Model {
       DstPort		      ifaction
     }
     Line {
-      ZOrder		      2
-      SrcBlock		      "Rest"
-      SrcPort		      1
-      DstBlock		      "Data Store\nWrite1"
-      DstPort		      1
-    }
-    Line {
       ZOrder		      3
       SrcBlock		      "Switch Case"
       SrcPort		      2
       Points		      [110, 0]
       DstBlock		      "Release"
       DstPort		      ifaction
-    }
-    Line {
-      ZOrder		      4
-      SrcBlock		      "Release"
-      SrcPort		      1
-      DstBlock		      "Data Store\nWrite2"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      5
-      SrcBlock		      "Hold Position"
-      SrcPort		      1
-      DstBlock		      "Data Store\nWrite3"
-      DstPort		      1
     }
     Line {
       ZOrder		      6
@@ -1408,7 +1345,7 @@ Model {
       ZOrder		      9
       SrcBlock		      "String Ang (rad)"
       SrcPort		      1
-      Points		      [29, 0]
+      Points		      [59, 0]
       Branch {
 	ZOrder			19
 	Points			[0, 115]
@@ -1425,7 +1362,7 @@ Model {
       ZOrder		      8
       SrcBlock		      "Arm Pos (rad)"
       SrcPort		      1
-      Points		      [40, 0]
+      Points		      [70, 0]
       Branch {
 	ZOrder			17
 	Points			[0, 170]
@@ -1461,9 +1398,9 @@ Model {
       Points		      [18, 0]
       Branch {
 	ZOrder			27
-	Points			[0, 185]
+	Points			[0, 175]
 	DstBlock		"Scope"
-	DstPort			3
+	DstPort			2
       }
       Branch {
 	ZOrder			26
@@ -1476,6 +1413,7 @@ Model {
       ZOrder		      15
       SrcBlock		      "Arm Pos (rad)1"
       SrcPort		      1
+      Points		      [212, 0; 0, -155]
       DstBlock		      "Hold Position"
       DstPort		      1
     }
@@ -1488,12 +1426,11 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      24
+      ZOrder		      34
       SrcBlock		      "Data Store\nRead"
       SrcPort		      1
-      Points		      [42, 0; 0, 15]
       DstBlock		      "Scope"
-      DstPort		      2
+      DstPort		      3
     }
   }
 }

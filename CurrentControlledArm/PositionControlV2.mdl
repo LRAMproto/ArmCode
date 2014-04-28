@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.148"
+    ComputedModelVersion    "1.150"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -57,7 +57,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[1337.0, 638.0]
 	ZoomFactor		[1.0]
-	Offset			[57.395833524068848, 143.0]
+	Offset			[57.395833524068848, 138.0]
       }
     }
   }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "LukePH"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Apr 10 10:49:59 2014"
-  RTWModifiedTimeStamp	  319027334
-  ModelVersionFormat	  "1.%<AutoIncrement:148>"
+  LastModifiedDate	  "Thu Apr 10 12:00:11 2014"
+  RTWModifiedTimeStamp	  319032010
+  ModelVersionFormat	  "1.%<AutoIncrement:150>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1274,15 +1274,15 @@ Model {
       SourceBlock	      "simulink/Continuous/PID Controller"
       SourceType	      "PID 1dof"
       ContentPreviewEnabled   off
-      Controller	      "PI"
+      Controller	      "PID"
       TimeDomain	      "Discrete-time"
       SampleTime	      "Ts"
       IntegratorMethod	      "Forward Euler"
       FilterMethod	      "Forward Euler"
       Form		      "Parallel"
-      P			      "8"
-      I			      ".1"
-      D			      "0"
+      P			      "30"
+      I			      ".15"
+      D			      "1.5"
       N			      "100"
       InitialConditionSource  "internal"
       InitialConditionForIntegrator "0"
@@ -1679,7 +1679,6 @@ Model {
       SID		      "242"
       Position		      [320, 282, 350, 318]
       ZOrder		      153
-      CurrentSetting	      "0"
     }
     Block {
       BlockType		      Saturate
@@ -2362,10 +2361,6 @@ Model {
 		  DstPort		  1
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  27
 		  SrcBlock		  "Constant"
 		  SrcPort		  1
@@ -2374,10 +2369,6 @@ Model {
 		  DstPort		  2
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  29
 		  SrcBlock		  "Relational\nOperator"
 		  SrcPort		  1
@@ -2386,10 +2377,6 @@ Model {
 		  DstPort		  2
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  33
 		  SrcBlock		  "Sum1"
 		  SrcPort		  1
@@ -2397,10 +2384,6 @@ Model {
 		  DstPort		  1
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  37
 		  SrcBlock		  "Delay"
 		  SrcPort		  1
@@ -2408,10 +2391,6 @@ Model {
 		  DstPort		  2
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  64
 		  SrcBlock		  "Switch"
 		  SrcPort		  1
@@ -2419,10 +2398,6 @@ Model {
 		  DstPort		  1
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  65
 		  SrcBlock		  "Memory"
 		  SrcPort		  1
@@ -2446,10 +2421,6 @@ Model {
 		  }
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  69
 		  SrcBlock		  "Switch1"
 		  SrcPort		  1
@@ -2457,10 +2428,6 @@ Model {
 		  DstPort		  1
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  70
 		  SrcBlock		  "Constant1"
 		  SrcPort		  1
@@ -2469,10 +2436,6 @@ Model {
 		  DstPort		  3
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  71
 		  SrcBlock		  "Relational\nOperator1"
 		  SrcPort		  1
@@ -2481,10 +2444,6 @@ Model {
 		  DstPort		  2
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  72
 		  SrcBlock		  "Constant2"
 		  SrcPort		  1
@@ -2493,10 +2452,6 @@ Model {
 		  DstPort		  1
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  73
 		  SrcBlock		  "Sum"
 		  SrcPort		  1
@@ -2515,10 +2470,6 @@ Model {
 		  }
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  74
 		  SrcBlock		  "Abs"
 		  SrcPort		  1
@@ -2526,10 +2477,6 @@ Model {
 		  DstPort		  1
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  77
 		  SrcBlock		  "Constant3"
 		  SrcPort		  1
@@ -2537,10 +2484,6 @@ Model {
 		  DstPort		  2
 		}
 		Line {
-		  FontName		  "Helvetica"
-		  FontSize		  9
-		  FontWeight		  "normal"
-		  FontAngle		  "normal"
 		  ZOrder		  81
 		  SrcBlock		  "To Rad2"
 		  SrcPort		  1
@@ -3573,10 +3516,6 @@ Model {
       DstPort		      1
     }
     Line {
-      FontName		      "Helvetica"
-      FontSize		      9
-      FontWeight	      "normal"
-      FontAngle		      "normal"
       ZOrder		      258
       SrcBlock		      "Hold Position"
       SrcPort		      1
@@ -3643,10 +3582,6 @@ Model {
       DstPort		      2
     }
     Line {
-      FontName		      "Helvetica"
-      FontSize		      9
-      FontWeight	      "normal"
-      FontAngle		      "normal"
       ZOrder		      201
       SrcBlock		      "Pos"
       SrcPort		      1
@@ -3848,16 +3783,16 @@ Stateflow {
       script		      "function [theta, i] = TrajectoryTimeMap(time,old_i)\n%#codegen\n% Timing Points\nT = [.5, .875, 1"
       ".125, 2, 3];\n\nPts = [[0,    pi,        0];...\n       [T(1), pi+1.25,   0];...\n       [T(2), pi,      .25*pi/"
       "(T(3)-T(2))];... % Linear regime\n       [T(3), pi-pi/4,   .25*pi/(T(3)-T(2))];... % Linear regime\n       [T(4)"
-      ", pi-1.25,    0];...\n       [T(5), pi-1.25,    0]];\n  \n% Generate Path\n[t, Th] = SplinePath(Pts,100);\naccu "
-      "= 10^6;        % Accuracy\n\n% Check to see if end of simulation\nif time > max(T)\n    theta = Th(end);\n    i "
-      "= old_i;\nelse\n    % Find closest time\n    [Val, I] = min(round(accu*abs(t - time))/accu);\n    theta = Th(I);"
-      "\n    i = I;\nend %If\nend % Function\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-      "%%%%%\nfunction [ t, X ] = SplinePath( Points, n )\n% Create Path, fits curve between Points (t,x dx) every n ti"
-      "mestep\n\nt = linspace(Points(1,1), Points(end,1),n); \ndt = t(2) - t(1);\nX = zeros(1,n);\nX(1)    = Points(1,2"
-      ");\n\nfor i=2:n\n   k = find(Points(:,1)>=t(i));\n   m = k(1);\n   x1 = Points(m-1,1);\n   x2 = Points(m,1);\n  "
-      " y1 = Points(m-1,2);\n   y2 = Points(m,2);\n   k1 = Points(m-1,3);\n   k2 = Points(m,3);\n   \n   g = ( t(i) - x"
-      "1 )/( x2 - x1 );\n   a = k1*(x2-x1)-(y2-y1);\n   b =-k2*(x2-x1)+(y2-y1);\n   \n   X(i) = (1-g)*y1 + g*y2 +g*(1-g"
-      ")*(a*(1-g)+b*g);\nend\n\nend% SplinePathFunction"
+      ", pi-1.25,    0];...\n       [T(5), pi-1.25,    0]];\n  \n% Generate Path\n[t, Th] = SplinePath(Pts,6);\naccu = "
+      "10^6;        % Accuracy\n\n% Check to see if end of simulation\nif time > max(T)\n    theta = Th(end);\n    i = "
+      "old_i;\nelse\n    % Find closest time\n    [Val, I] = min(round(accu*abs(t - time))/accu);\n    theta = Th(I);\n"
+      "    i = I;\nend %If\nend % Function\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+      "%%%\nfunction [ t, X ] = SplinePath( Points, n )\n% Create Path, fits curve between Points (t,x dx) every n time"
+      "step\n\nt = linspace(Points(1,1), Points(end,1),n); \ndt = t(2) - t(1);\nX = zeros(1,n);\nX(1)    = Points(1,2);"
+      "\n\nfor i=2:n\n   k = find(Points(:,1)>=t(i));\n   m = k(1);\n   x1 = Points(m-1,1);\n   x2 = Points(m,1);\n   y"
+      "1 = Points(m-1,2);\n   y2 = Points(m,2);\n   k1 = Points(m-1,3);\n   k2 = Points(m,3);\n   \n   g = ( t(i) - x1 "
+      ")/( x2 - x1 );\n   a = k1*(x2-x1)-(y2-y1);\n   b =-k2*(x2-x1)+(y2-y1);\n   \n   X(i) = (1-g)*y1 + g*y2 +g*(1-g)*"
+      "(a*(1-g)+b*g);\nend\n\nend% SplinePathFunction"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }

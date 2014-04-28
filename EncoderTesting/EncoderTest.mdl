@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.83"
+    ComputedModelVersion    "1.87"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,7 +31,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [282.0, 91.0, 1066.0, 738.0]
+      Location		      [248.0, 91.0, 1066.0, 738.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -57,7 +57,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[1016.0, 564.0]
 	ZoomFactor		[1.0]
-	Offset			[0.0, 0.0]
+	Offset			[20.503731343283562, -43.839552238805936]
       }
     }
   }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "LukePH"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Apr 10 09:08:16 2014"
-  RTWModifiedTimeStamp	  319021683
-  ModelVersionFormat	  "1.%<AutoIncrement:83>"
+  LastModifiedDate	  "Wed Apr 16 10:24:12 2014"
+  RTWModifiedTimeStamp	  319544350
+  ModelVersionFormat	  "1.%<AutoIncrement:87>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -807,15 +807,6 @@ Model {
       NonVirtualBus	      off
     }
     Block {
-      BlockType		      Step
-      Time		      "1"
-      Before		      "0"
-      After		      "1"
-      SampleTime	      "-1"
-      VectorParams1D	      on
-      ZeroCross		      on
-    }
-    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -843,7 +834,7 @@ Model {
   }
   System {
     Name		    "EncoderTest"
-    Location		    [282, 91, 1348, 829]
+    Location		    [248, 91, 1314, 829]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -857,7 +848,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "122"
+    SIDHighWatermark	    "124"
     Block {
       BlockType		      Reference
       Name		      "Analog input"
@@ -1075,7 +1066,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Set-up"
-	Location		[282, 91, 1348, 829]
+	Location		[248, 91, 1314, 829]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1264,10 +1255,17 @@ Model {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "Do Not Zero"
+	  Name			  "Do Not Zero Arm"
 	  SID			  "107"
 	  Position		  [50, 310, 80, 340]
 	  ZOrder		  63
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Do Not Zero Spool"
+	  SID			  "124"
+	  Position		  [50, 370, 80, 400]
+	  ZOrder		  98
 	}
 	Block {
 	  BlockType		  Reference
@@ -1290,29 +1288,12 @@ Model {
 	  upperReset		  "[1]"
 	  upperValue		  "[0]"
 	}
-	Block {
-	  BlockType		  Step
-	  Name			  "Zero On Start"
-	  SID			  "109"
-	  Position		  [50, 370, 80, 400]
-	  ZOrder		  98
-	  Time			  "2"
-	  SampleTime		  "0"
-	}
 	Line {
 	  ZOrder		  4
-	  SrcBlock		  "Do Not Zero"
+	  SrcBlock		  "Do Not Zero Arm"
 	  SrcPort		  1
 	  DstBlock		  "Digital output"
 	  DstPort		  18
-	}
-	Line {
-	  ZOrder		  5
-	  SrcBlock		  "Zero On Start"
-	  SrcPort		  1
-	  Points		  [42, 0; 0, -40]
-	  DstBlock		  "Digital output"
-	  DstPort		  20
 	}
 	Line {
 	  ZOrder		  12
@@ -1330,6 +1311,14 @@ Model {
 	    DstBlock		    "Digital output"
 	    DstPort		    17
 	  }
+	}
+	Line {
+	  ZOrder		  26
+	  SrcBlock		  "Do Not Zero Spool"
+	  SrcPort		  1
+	  Points		  [47, 0; 0, -40]
+	  DstBlock		  "Digital output"
+	  DstPort		  20
 	}
       }
     }
