@@ -9,8 +9,10 @@ fsys.fclose(h); % Close the log file
 dataLog = readxpcfile(fsysData); % Convert uint8 data to double
 fsTime = dataLog.data(:,end); % Get file scope time log
 fsData = dataLog.data(:,1:end-1); % Get file scope data log
+figure
 plot(fsTime, fsData);% Plot the data
 title('RawFileData');
-save GoodCastDataLog.mat fsTime fsData; % Save the data
+legend('actual', 'measured')
+save test.mat fsTime fsData; % Save the data
 
 clear sc fsys h fsysData dataLog scopeID ans
