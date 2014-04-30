@@ -1,12 +1,12 @@
 Model {
-  Name			  "StateSwitch"
+  Name			  "StringPayout"
   Version		  8.0
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.50"
+    ComputedModelVersion    "1.11"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -30,7 +30,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [4.0, 5.0, 1174.0, 740.0]
+      Location		      [235.0, 65.0, 975.0, 608.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -47,46 +47,16 @@ Model {
 	$ClassName		"Simulink.ExplorerBarInfo"
 	Visible			[1]
       }
-      Array {
-	Type			"Simulink.EditorInfo"
-	Dimension		4
-	Object {
-	  $ObjectID		  5
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "49::50"
-	  Extents		  [1122.0, 561.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-216.0, -140.5]
-	}
-	Object {
-	  $ObjectID		  6
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "49::66"
-	  Extents		  [1122.0, 561.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-279.0, -66.0]
-	}
-	Object {
-	  $ObjectID		  7
-	  IsActive		  [1]
-	  ViewObjType		  "SimulinkTopLevel"
-	  LoadSaveID		  "0"
-	  Extents		  [1122.0, 561.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [0.0, 0.0]
-	}
-	Object {
-	  $ObjectID		  8
-	  IsActive		  [0]
-	  ViewObjType		  "StateflowChart"
-	  LoadSaveID		  "49"
-	  Extents		  [1122.0, 561.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-6.2734402852053108, -79.608072319837021]
-	}
-	PropName		"EditorsInfo"
+      Object {
+	$PropName		"EditorsInfo"
+	$ObjectID		5
+	$ClassName		"Simulink.EditorInfo"
+	IsActive		[1]
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
+	Extents			[923.0, 432.0]
+	ZoomFactor		[1.0]
+	Offset			[-14.56250259280182, 6.0]
       }
     }
   }
@@ -96,12 +66,12 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Luke"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Apr 30 11:35:13 2014"
-  RTWModifiedTimeStamp	  320693477
-  ModelVersionFormat	  "1.%<AutoIncrement:50>"
+  LastModifiedDate	  "Tue Apr 29 16:39:41 2014"
+  RTWModifiedTimeStamp	  319398406
+  ModelVersionFormat	  "1.%<AutoIncrement:11>"
   ConfigurationManager	  "none"
-  SampleTimeColors	  on
-  SampleTimeAnnotations	  on
+  SampleTimeColors	  off
+  SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
   WideLines		  off
   ShowLineDimensions	  off
@@ -133,14 +103,14 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    9
+    $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "StateSwitch"
+    model_		    "StringPayout"
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "StateSwitch"
+      Cell		      "StringPayout"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -192,18 +162,18 @@ Model {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      10
+      $ObjectID		      7
       Version		      "1.12.1"
       Array {
 	Type			"Handle"
 	Dimension		8
 	Simulink.SolverCC {
-	  $ObjectID		  11
+	  $ObjectID		  8
 	  Version		  "1.12.1"
 	  StartTime		  "0.0"
-	  StopTime		  "5"
+	  StopTime		  "2*pi"
 	  AbsTol		  "auto"
-	  FixedStep		  "Ts"
+	  FixedStep		  ".05"
 	  InitialStep		  "auto"
 	  MaxNumMinSteps	  "-1"
 	  MaxOrder		  5
@@ -233,7 +203,7 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  12
+	  $ObjectID		  9
 	  Version		  "1.12.1"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
@@ -265,7 +235,7 @@ Model {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  13
+	  $ObjectID		  10
 	  Version		  "1.12.1"
 	  Array {
 	    Type		    "Cell"
@@ -321,7 +291,7 @@ Model {
 	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  14
+	  $ObjectID		  11
 	  Version		  "1.12.1"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
@@ -411,7 +381,7 @@ Model {
 	  SFTransitionActionBeforeConditionDiag	"warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  15
+	  $ObjectID		  12
 	  Version		  "1.12.1"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
@@ -448,7 +418,7 @@ Model {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  16
+	  $ObjectID		  13
 	  Version		  "1.12.1"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
@@ -463,7 +433,7 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  17
+	  $ObjectID		  14
 	  Version		  "1.12.1"
 	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
@@ -478,7 +448,7 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  18
+	  $ObjectID		  15
 	  Version		  "1.12.1"
 	  Array {
 	    Type		    "Cell"
@@ -547,7 +517,7 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      19
+	      $ObjectID		      16
 	      Version		      "1.12.1"
 	      Array {
 		Type			"Cell"
@@ -616,7 +586,7 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      20
+	      $ObjectID		      17
 	      Version		      "1.12.1"
 	      Array {
 		Type			"Cell"
@@ -699,17 +669,17 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 156, 40, 1284, 794 ] 
+      ConfigPrmDlgPosition     [ 164, 70, 1276, 786 ] 
     }
     PropName		    "ConfigurationSets"
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    10
+    $ObjectID		    7
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    21
+    $ObjectID		    18
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -770,45 +740,68 @@ Model {
   }
   BlockParameterDefaults {
     Block {
-      BlockType		      Demux
-      Outputs		      "4"
-      DisplayOption	      "none"
-      BusSelectionMode	      off
+      BlockType		      ActionPort
+      InitializeStates	      "held"
+      PropagateVarSize	      "Only when execution is resumed"
+      ActionType	      "unset"
     }
     Block {
-      BlockType		      DiscreteIntegrator
-      IntegratorMethod	      "Integration: Forward Euler"
-      gainval		      "1.0"
-      ExternalReset	      "none"
-      InitialConditionSource  "internal"
-      InitialCondition	      "0"
-      InitialConditionMode    "State and output"
-      SampleTime	      "1"
+      BlockType		      Constant
+      Value		      "1"
+      VectorParams1D	      on
+      SamplingMode	      "Sample based"
       OutMin		      "[]"
       OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
       LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	off
-      LimitOutput	      off
-      UpperSaturationLimit    "inf"
-      LowerSaturationLimit    "-inf"
-      ShowSaturationPort      off
-      ShowStatePort	      off
-      IgnoreLimit	      off
-      StateMustResolveToSignalObject off
-      RTWStateStorageClass    "Auto"
+      SampleTime	      "inf"
+      FramePeriod	      "inf"
+      PreserveConstantTs      off
     }
     Block {
-      BlockType		      DiscretePulseGenerator
-      PulseType		      "Sample based"
-      TimeSource	      "Use simulation time"
-      Amplitude		      "1"
-      Period		      "2"
-      PulseWidth	      "1"
-      PhaseDelay	      "0"
-      SampleTime	      "1"
+      BlockType		      DataStoreMemory
+      DataStoreName	      "A"
+      ReadBeforeWriteMsg      "none"
+      WriteAfterWriteMsg      "none"
+      WriteAfterReadMsg	      "none"
+      InitialValue	      "0"
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
       VectorParams1D	      on
+      ShowAdditionalParam     off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      SignalType	      "auto"
+      Dimensions	      "-1"
+      DataLogging	      off
+      DataLoggingLimitDataPoints off
+      DataLoggingMaxPoints    "5000"
+      DataLoggingDecimateData off
+      DataLoggingDecimation   "2"
+      DataLoggingNameMode     "SignalName"
+    }
+    Block {
+      BlockType		      DataStoreRead
+      DataStoreName	      "A"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      DataStoreWrite
+      DataStoreName	      "A"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      From
+      GotoTag		      "A"
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      Goto
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
     }
     Block {
       BlockType		      Inport
@@ -827,24 +820,6 @@ Model {
       LatchByDelayingOutsideSignal off
       LatchInputForFeedbackSignals off
       Interpolate	      on
-    }
-    Block {
-      BlockType		      MultiPortSwitch
-      DataPortOrder	      "One-based contiguous"
-      Inputs		      "3"
-      DataPortIndices	      "{1,2,3}"
-      DataPortForDefault      "Last data port"
-      DiagnosticForDefault    "Error"
-      zeroidx		      off
-      InputSameDT	      on
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-      AllowDiffInputSizes     off
     }
     Block {
       BlockType		      Mux
@@ -872,13 +847,6 @@ Model {
       InitialOutput	      "[]"
     }
     Block {
-      BlockType		      S-Function
-      FunctionName	      "system"
-      SFunctionModules	      "''"
-      PortCounts	      "[]"
-      SFunctionDeploymentMode off
-    }
-    Block {
       BlockType		      Scope
       ModelBased	      off
       TickLabels	      "OneTimeTick"
@@ -897,13 +865,17 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      Step
-      Time		      "1"
-      Before		      "0"
-      After		      "1"
+      BlockType		      Sin
+      SineType		      "Time based"
+      TimeSource	      "Use simulation time"
+      Amplitude		      "1"
+      Bias		      "0"
+      Frequency		      "1"
+      Phase		      "0"
+      Samples		      "10"
+      Offset		      "0"
       SampleTime	      "-1"
       VectorParams1D	      on
-      ZeroCross		      on
     }
     Block {
       BlockType		      SubSystem
@@ -945,26 +917,16 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      TriggerPort
-      TriggerType	      "rising"
-      StatesWhenEnabling      "inherit"
-      PropagateVarSize	      "During execution"
-      ShowOutputPort	      off
-      OutputDataType	      "auto"
-      SampleTimeType	      "triggered"
-      SampleTime	      "1"
+      BlockType		      SwitchCase
+      CaseConditions	      "{1}"
+      ShowDefaultCase	      on
       ZeroCross		      on
-      PortDimensions	      "-1"
-      TriggerSignalSampleTime "-1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: auto"
-      Interpolate	      on
+      SampleTime	      "-1"
     }
   }
   System {
-    Name		    "StateSwitch"
-    Location		    [4, 5, 1178, 745]
+    Name		    "StringPayout"
+    Location		    [235, 65, 1210, 673]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -978,26 +940,62 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "69"
+    SIDHighWatermark	    "43"
     Block {
-      BlockType		      DiscretePulseGenerator
-      Name		      "CLK"
-      SID		      "68"
+      BlockType		      Sum
+      Name		      "Add"
+      SID		      "40"
+      Ports		      [2, 1]
+      Position		      [225, 117, 255, 148]
+      ZOrder		      27
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sin
+      Name		      "Arm Pos (rad)"
+      SID		      "32"
       Ports		      [0, 1]
-      Position		      [140, 119, 170, 151]
-      ZOrder		      54
-      PulseType		      "Time based"
-      Period		      "2*Ts"
-      PulseWidth	      "50"
+      Position		      [20, 85, 50, 115]
+      ZOrder		      19
+      Amplitude		      "pi/2"
+      Bias		      "pi/2"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Sin
+      Name		      "Arm Pos (rad)1"
+      SID		      "41"
+      Ports		      [0, 1]
+      Position		      [535, 240, 565, 270]
+      ZOrder		      28
+      Amplitude		      ".1"
+      Frequency		      "4*pi"
+      SampleTime	      "0"
     }
     Block {
       BlockType		      Reference
-      Name		      "Compare\nTo Constant2"
-      SID		      "48"
+      Name		      "Compare\nTo Constant"
+      SID		      "34"
       Ports		      [1, 1]
-      Position		      [485, 370, 540, 400]
-      ZOrder		      36
-      Commented		      on
+      Position		      [110, 85, 165, 115]
+      ZOrder		      21
+      LibraryVersion	      "1.281"
+      SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
+      SourceType	      "Compare To Constant"
+      relop		      "<="
+      const		      "pi/4"
+      OutDataTypeStr	      "uint8"
+      ZeroCross		      on
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Compare\nTo Constant1"
+      SID		      "37"
+      Ports		      [1, 1]
+      Position		      [105, 155, 160, 185]
+      ZOrder		      24
       LibraryVersion	      "1.281"
       SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
       SourceType	      "Compare To Constant"
@@ -1007,84 +1005,275 @@ Model {
       ZeroCross		      on
     }
     Block {
-      BlockType		      DiscreteIntegrator
-      Name		      "Discrete-Time Integrator"
-      SID		      "62"
-      Ports		      [1, 1]
-      Position		      [520, 169, 555, 201]
-      ZOrder		      48
-      SampleTime	      "Ts"
-      ICPrevOutput	      "DiscIntNeverNeededParam"
-      ICPrevScaledInput	      "DiscIntNeverNeededParam"
+      BlockType		      DataStoreMemory
+      Name		      "Data Store\nMemory"
+      SID		      "5"
+      Position		      [460, 20, 492, 50]
+      ZOrder		      5
+      ReadBeforeWriteMsg      "warning"
+      WriteAfterWriteMsg      "warning"
+      WriteAfterReadMsg	      "warning"
     }
     Block {
-      BlockType		      DiscreteIntegrator
-      Name		      "Discrete-Time Integrator1"
-      SID		      "63"
-      Ports		      [1, 1]
-      Position		      [635, 169, 670, 201]
-      ZOrder		      49
-      SampleTime	      "Ts"
-      ICPrevOutput	      "DiscIntNeverNeededParam"
-      ICPrevScaledInput	      "DiscIntNeverNeededParam"
+      BlockType		      DataStoreRead
+      Name		      "Data Store\nRead"
+      SID		      "3"
+      Ports		      [0, 1]
+      Position		      [20, 280, 50, 310]
+      ZOrder		      3
     }
     Block {
-      BlockType		      MultiPortSwitch
-      Name		      "Multiport Switch"
-      SID		      "52"
-      Ports		      [4, 1]
-      Position		      [125, 328, 145, 467]
-      ZOrder		      38
+      BlockType		      DataStoreWrite
+      Name		      "Data Store\nWrite1"
+      SID		      "19"
+      Ports		      [1]
+      Position		      [605, 135, 635, 165]
+      ZOrder		      12
+      ShowName		      off
+    }
+    Block {
+      BlockType		      DataStoreWrite
+      Name		      "Data Store\nWrite2"
+      SID		      "20"
+      Ports		      [1]
+      Position		      [695, 190, 725, 220]
+      ZOrder		      13
+      ShowName		      off
+    }
+    Block {
+      BlockType		      DataStoreWrite
+      Name		      "Data Store\nWrite3"
+      SID		      "21"
+      Ports		      [1]
+      Position		      [800, 240, 830, 270]
+      ZOrder		      15
+      ShowName		      off
+    }
+    Block {
+      BlockType		      From
+      Name		      "From"
+      SID		      "6"
+      Position		      [485, 351, 525, 379]
+      ZOrder		      6
       Commented		      on
-      InputSameDT	      off
-      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Goto
+      Name		      "Goto"
+      SID		      "7"
+      Position		      [410, 350, 450, 380]
+      ZOrder		      7
+      Commented		      on
+      GotoTag		      "A"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Hold Position"
+      SID		      "22"
+      Ports		      [1, 1, 0, 0, 0, 0, 0, 1]
+      Position		      [680, 238, 780, 272]
+      ZOrder		      14
+      TreatAsAtomicUnit	      on
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Hold Position"
+	Location		[568, 157, 1447, 765]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "Spool Pos (rad)"
+	  SID			  "28"
+	  Position		  [185, 133, 215, 147]
+	  ZOrder		  8
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  ActionPort
+	  Name			  "Action Port"
+	  SID			  "23"
+	  Position		  [170, 15, 229, 43]
+	  ZOrder		  -2
+	  ActionType		  "case"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Cmd"
+	  SID			  "25"
+	  Position		  [460, 133, 490, 147]
+	  ZOrder		  -3
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Spool Pos (rad)"
+	  SrcPort		  1
+	  DstBlock		  "Cmd"
+	  DstPort		  1
+	}
+      }
     }
     Block {
       BlockType		      Mux
       Name		      "Mux"
-      SID		      "54"
-      Ports		      [3, 1]
-      Position		      [295, 23, 300, 67]
-      ZOrder		      40
+      SID		      "42"
+      Ports		      [2, 1]
+      Position		      [140, 260, 145, 295]
+      ZOrder		      29
       ShowName		      off
-      Inputs		      "3"
+      Inputs		      "2"
       DisplayOption	      "bar"
     }
     Block {
-      BlockType		      DiscretePulseGenerator
-      Name		      "Pulse Generator"
-      SID		      "53"
-      Ports		      [0, 1]
-      Position		      [210, 384, 240, 416]
-      ZOrder		      39
-      Commented		      on
-      PulseType		      "Time based"
-      Period		      "10"
-      PulseWidth	      "5"
+      BlockType		      SubSystem
+      Name		      "Release"
+      SID		      "15"
+      Ports		      [0, 1, 0, 0, 0, 0, 0, 1]
+      Position		      [605, 188, 675, 222]
+      ZOrder		      11
+      TreatAsAtomicUnit	      on
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Release"
+	Location		[568, 157, 1447, 765]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  ActionPort
+	  Name			  "Action Port"
+	  SID			  "16"
+	  Position		  [170, 15, 229, 43]
+	  ZOrder		  -2
+	  ActionType		  "case"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant"
+	  SID			  "17"
+	  Position		  [250, 70, 280, 100]
+	  ZOrder		  1
+	  Value			  "1.0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Cmd"
+	  SID			  "18"
+	  Position		  [325, 78, 355, 92]
+	  ZOrder		  -3
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  DstBlock		  "Cmd"
+	  DstPort		  1
+	}
+      }
     }
     Block {
-      BlockType		      Step
-      Name		      "Reset"
-      SID		      "69"
-      Position		      [140, 15, 170, 45]
-      ZOrder		      55
-      Time		      ".1"
-      Before		      "1"
-      After		      "0"
-      SampleTime	      "0"
+      BlockType		      SubSystem
+      Name		      "Rest"
+      SID		      "10"
+      Ports		      [0, 1, 0, 0, 0, 0, 0, 1]
+      Position		      [515, 133, 585, 167]
+      ZOrder		      10
+      TreatAsAtomicUnit	      on
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Rest"
+	Location		[560, 133, 1592, 741]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  ActionPort
+	  Name			  "Action Port"
+	  SID			  "12"
+	  Position		  [170, 15, 229, 43]
+	  ZOrder		  -2
+	  ActionType		  "default"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant"
+	  SID			  "14"
+	  Position		  [250, 70, 280, 100]
+	  ZOrder		  1
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Cmd"
+	  SID			  "13"
+	  Position		  [325, 78, 355, 92]
+	  ZOrder		  -3
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  DstBlock		  "Cmd"
+	  DstPort		  1
+	}
+      }
     }
     Block {
       BlockType		      Scope
       Name		      "Scope"
-      SID		      "61"
+      SID		      "43"
       Ports		      [3]
-      Position		      [735, 73, 765, 107]
-      ZOrder		      47
+      Position		      [325, 293, 355, 327]
+      ZOrder		      30
       Floating		      off
-      Location		      [840, 322, 1266, 714]
+      Location		      [14, 190, 426, 554]
       Open		      on
       NumInputPorts	      "3"
-      ZoomMode		      "yonly"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
@@ -1102,463 +1291,147 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      off
-      YMin		      "-5~-5~-5"
-      YMax		      "5~5~5"
+      YMin		      "-1~-0.1~-5"
+      YMax		      "4~0.1~5"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
     Block {
-      BlockType		      SubSystem
-      Name		      "Spool Controller"
-      SID		      "49"
-      RequirementInfo	      "{}  %GIDa_33442fbe_5776_46ae_820c_e485a662037e"
-      Ports		      [1, 1, 0, 1]
-      Position		      [345, 147, 475, 223]
-      ZOrder		      37
-      LibraryVersion	      "1.262"
-      ErrorFcn		      "Stateflow.Translate.translate"
-      PermitHierarchicalResolution "ExplicitOnly"
-      TreatAsAtomicUnit	      on
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      SFBlockType	      "Chart"
-      Object {
-	$PropName		"MaskObject"
-	$ObjectID		22
-	$ClassName		"Simulink.Mask"
-	Type			"Stateflow"
-	Description		"Stateflow diagram"
-	SelfModifiable		"on"
-	Display			"plot(sf('Private','sfblk','xIcon'),sf('Private','sfblk','yIcon'));text(0.5,0,sf('Private', 'sfblk', 'tIcon"
-	"'),'HorizontalAl','Center','VerticalAl','Bottom');"
-	IconFrame		"off"
-	IconOpaque		"off"
-	IconUnits		"normalized"
-      }
-      System {
-	Name			"Spool Controller"
-	Location		[4, 5, 1178, 745]
-	Open			on
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	SIDHighWatermark	"73"
-	Block {
-	  BlockType		  Inport
-	  Name			  "Spool"
-	  SID			  "49::72"
-	  Position		  [20, 101, 40, 119]
-	  ZOrder		  30
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  TriggerPort
-	  Name			  " input events "
-	  SID			  "49::70"
-	  Ports			  [0, 1]
-	  Position		  [20, 171, 40, 189]
-	  ZOrder		  28
-	  TriggerType		  "either"
-	  StatesWhenEnabling	  "held"
-	  ShowOutputPort	  on
-	}
-	Block {
-	  BlockType		  Demux
-	  Name			  " Demux "
-	  SID			  "49::38"
-	  Ports			  [1, 1]
-	  Position		  [270, 220, 320, 260]
-	  ZOrder		  18
-	  Outputs		  "1"
-	}
-	Block {
-	  BlockType		  S-Function
-	  Name			  " SFunction "
-	  SID			  "49::37"
-	  Tag			  "Stateflow S-Function StateSwitch 1"
-	  Ports			  [3, 4]
-	  Position		  [180, 100, 230, 220]
-	  ZOrder		  17
-	  FunctionName		  "sf_sfun"
-	  PortCounts		  "[3 4]"
-	  EnableBusSupport	  on
-	  Port {
-	    PortNumber		    2
-	    Name		    "Cmd"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "AddSlack.PIDLoop"
-	  SID			  "49::50"
-	  Ports			  [2, 1, 0, 1]
-	  Position		  [180, 290, 230, 350]
-	  ZOrder		  25
-	  BlockMirror		  on
-	  UndoDeleteFcn		  "Stateflow.SLINSF.SimulinkMan.restorePreDeleteFcn"
-	  PreDeleteFcn		  "Stateflow.SLINSF.SimulinkMan.removePreDeleteFcn"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "AddSlack.PIDLoop"
-	    Location		    [4, 5, 1178, 745]
-	    Open		    on
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Spool_pos"
-	      SID		      "49::64"
-	      Position		      [85, 203, 115, 217]
-	      ZOrder		      4
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Desired"
-	      SID		      "49::65"
-	      Position		      [85, 133, 115, 147]
-	      ZOrder		      5
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      TriggerPort
-	      Name		      "f"
-	      SID		      "49::51"
-	      Ports		      []
-	      Position		      [15, 15, 35, 35]
-	      ZOrder		      1
-	      CopyFcn		      "Stateflow.SLINSF.SimulinkMan.removeBlockPreDeleteFcn"
-	      PreDeleteFcn	      "Stateflow.SLINSF.SimulinkMan.unsafePredeleteFcn"
-	      TriggerType	      "function-call"
-	      StatesWhenEnabling      "held"
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "Discrete PID Controller"
-	      SID		      "49::66"
-	      Ports		      [1, 1]
-	      Position		      [325, 122, 365, 158]
-	      ZOrder		      6
-	      LibraryVersion	      "1.281"
-	      SourceBlock	      "simulink/Continuous/PID Controller"
-	      SourceType	      "PID 1dof"
-	      Controller	      "PID"
-	      TimeDomain	      "Discrete-time"
-	      SampleTime	      "-1"
-	      IntegratorMethod	      "Forward Euler"
-	      FilterMethod	      "Forward Euler"
-	      Form		      "Parallel"
-	      P			      "1"
-	      I			      "1"
-	      D			      "0"
-	      N			      "100"
-	      InitialConditionSource  "internal"
-	      InitialConditionForIntegrator "0"
-	      InitialConditionForFilter	"0"
-	      ExternalReset	      "none"
-	      IgnoreLimit	      off
-	      ZeroCross		      on
-	      LimitOutput	      off
-	      UpperSaturationLimit    "inf"
-	      LowerSaturationLimit    "-inf"
-	      LinearizeAsGain	      off
-	      AntiWindupMode	      "none"
-	      Kb		      "1"
-	      TrackingMode	      off
-	      Kt		      "1"
-	      RndMeth		      "Floor"
-	      SaturateOnIntegerOverflow	off
-	      LockScale		      off
-	      PParamMin		      "[]"
-	      PParamMax		      "[]"
-	      PParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      IParamMin		      "[]"
-	      IParamMax		      "[]"
-	      IParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      DParamMin		      "[]"
-	      DParamMax		      "[]"
-	      DParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      NParamMin		      "[]"
-	      NParamMax		      "[]"
-	      NParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      KbParamMin	      "[]"
-	      KbParamMax	      "[]"
-	      KbParamDataTypeStr      "Inherit: Inherit via internal rule"
-	      KtParamMin	      "[]"
-	      KtParamMax	      "[]"
-	      KtParamDataTypeStr      "Inherit: Inherit via internal rule"
-	      POutMin		      "[]"
-	      POutMax		      "[]"
-	      POutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      IOutMin		      "[]"
-	      IOutMax		      "[]"
-	      IOutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      DOutMin		      "[]"
-	      DOutMax		      "[]"
-	      DOutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      NOutMin		      "[]"
-	      NOutMax		      "[]"
-	      NOutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      KbOutMin		      "[]"
-	      KbOutMax		      "[]"
-	      KbOutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      KtOutMin		      "[]"
-	      KtOutMax		      "[]"
-	      KtOutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      IntegratorOutMin	      "[]"
-	      IntegratorOutMax	      "[]"
-	      IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
-	      FilterOutMin	      "[]"
-	      FilterOutMax	      "[]"
-	      FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
-	      SumOutMin		      "[]"
-	      SumOutMax		      "[]"
-	      SumOutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SumI1OutMin	      "[]"
-	      SumI1OutMax	      "[]"
-	      SumI1OutDataTypeStr     "Inherit: Inherit via internal rule"
-	      SumI2OutMin	      "[]"
-	      SumI2OutMax	      "[]"
-	      SumI2OutDataTypeStr     "Inherit: Inherit via internal rule"
-	      SumI3OutMin	      "[]"
-	      SumI3OutMax	      "[]"
-	      SumI3OutDataTypeStr     "Inherit: Inherit via internal rule"
-	      SumDOutMin	      "[]"
-	      SumDOutMax	      "[]"
-	      SumDOutDataTypeStr      "Inherit: Inherit via internal rule"
-	      SumAccumDataTypeStr     "Inherit: Inherit via internal rule"
-	      SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
-	      SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
-	      SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
-	      SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
-	      SaturationOutMin	      "[]"
-	      SaturationOutMax	      "[]"
-	      SaturationOutDataTypeStr "Inherit: Same as input"
-	      IntegratorContinuousStateAttributes "''"
-	      IntegratorStateMustResolveToSignalObject off
-	      IntegratorRTWStateStorageClass "Auto"
-	      FilterContinuousStateAttributes "''"
-	      FilterStateMustResolveToSignalObject off
-	      FilterRTWStateStorageClass "Auto"
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum"
-	      SID		      "49::62"
-	      Ports		      [2, 1]
-	      Position		      [150, 130, 170, 150]
-	      ZOrder		      2
-	      ShowName		      off
-	      IconShape		      "round"
-	      Inputs		      "|+-"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Out"
-	      SID		      "49::63"
-	      Position		      [500, 133, 530, 147]
-	      ZOrder		      3
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "Spool_pos"
-	      SrcPort		      1
-	      Points		      [40, 0]
-	      DstBlock		      "Sum"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "Desired"
-	      SrcPort		      1
-	      DstBlock		      "Sum"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Sum"
-	      SrcPort		      1
-	      DstBlock		      "Discrete PID Controller"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Discrete PID Controller"
-	      SrcPort		      1
-	      DstBlock		      "Out"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "Cmd"
-	  SID			  "49::73"
-	  Position		  [460, 101, 480, 119]
-	  ZOrder		  31
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  SrcBlock		  "Spool"
-	  SrcPort		  1
-	  DstBlock		  " SFunction "
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "Cmd"
-	  Labels		  [0, 0]
-	  SrcBlock		  " SFunction "
-	  SrcPort		  2
-	  DstBlock		  "Cmd"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  " SFunction "
-	  SrcPort		  3
-	  DstBlock		  "AddSlack.PIDLoop"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  " SFunction "
-	  SrcPort		  4
-	  DstBlock		  "AddSlack.PIDLoop"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "AddSlack.PIDLoop"
-	  SrcPort		  1
-	  DstBlock		  " SFunction "
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  " Demux "
-	  SrcPort		  1
-	  DstBlock		  "AddSlack.PIDLoop"
-	  DstPort		  trigger
-	}
-	Line {
-	  SrcBlock		  " input events "
-	  SrcPort		  1
-	  DstBlock		  " SFunction "
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  " SFunction "
-	  SrcPort		  1
-	  DstBlock		  " Demux "
-	  DstPort		  1
-	}
-      }
-    }
-    Block {
-      BlockType		      Step
-      Name		      "Trigger"
-      SID		      "44"
-      Position		      [140, 65, 170, 95]
-      ZOrder		      32
-      Time		      ".5"
+      BlockType		      Sin
+      Name		      "String Ang (rad)"
+      SID		      "33"
+      Ports		      [0, 1]
+      Position		      [20, 155, 50, 185]
+      ZOrder		      20
+      Amplitude		      "-.75*pi"
+      Bias		      ".75*pi"
+      Frequency		      "1.5"
       SampleTime	      "0"
     }
+    Block {
+      BlockType		      SwitchCase
+      Name		      "Switch Case"
+      SID		      "9"
+      Ports		      [1, 3]
+      Position		      [425, 81, 525, 119]
+      ZOrder		      9
+      CaseConditions	      "{1,2}"
+    }
     Line {
-      SrcBlock		      "Trigger"
+      SrcBlock		      "Switch Case"
+      SrcPort		      3
+      Points		      [20, 0]
+      DstBlock		      "Rest"
+      DstPort		      ifaction
+    }
+    Line {
+      SrcBlock		      "Rest"
       SrcPort		      1
-      Points		      [37, 0; 0, -35]
-      DstBlock		      "Mux"
+      DstBlock		      "Data Store\nWrite1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Switch Case"
+      SrcPort		      2
+      Points		      [110, 0]
+      DstBlock		      "Release"
+      DstPort		      ifaction
+    }
+    Line {
+      SrcBlock		      "Release"
+      SrcPort		      1
+      DstBlock		      "Data Store\nWrite2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Hold Position"
+      SrcPort		      1
+      DstBlock		      "Data Store\nWrite3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Switch Case"
+      SrcPort		      1
+      Points		      [200, 0]
+      DstBlock		      "Hold Position"
+      DstPort		      ifaction
+    }
+    Line {
+      SrcBlock		      "String Ang (rad)"
+      SrcPort		      1
+      Points		      [29, 0]
+      Branch {
+	Points			[0, 115]
+	DstBlock		"Mux"
+	DstPort			2
+      }
+      Branch {
+	DstBlock		"Compare\nTo Constant1"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Arm Pos (rad)"
+      SrcPort		      1
+      Points		      [40, 0]
+      Branch {
+	Points			[0, 170]
+	DstBlock		"Mux"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Compare\nTo Constant"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Compare\nTo Constant"
+      SrcPort		      1
+      Points		      [24, 0; 0, 25]
+      DstBlock		      "Add"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Compare\nTo Constant1"
+      SrcPort		      1
+      Points		      [27, 0; 0, -30]
+      DstBlock		      "Add"
       DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Add"
+      SrcPort		      1
+      Points		      [18, 0]
+      Branch {
+	Points			[0, 185]
+	DstBlock		"Scope"
+	DstPort			3
+      }
+      Branch {
+	Points			[61, 0; 0, -35]
+	DstBlock		"Switch Case"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Arm Pos (rad)1"
+      SrcPort		      1
+      DstBlock		      "Hold Position"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "Mux"
       SrcPort		      1
-      Points		      [105, 0]
-      DstBlock		      "Spool Controller"
-      DstPort		      trigger
-    }
-    Line {
-      SrcBlock		      "Spool Controller"
-      SrcPort		      1
-      Points		      [19, 0]
-      Branch {
-	Points			[0, -105]
-	DstBlock		"Scope"
-	DstPort			1
-      }
-      Branch {
-	DstBlock		"Discrete-Time Integrator"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Discrete-Time Integrator"
-      SrcPort		      1
-      Points		      [34, 0]
-      Branch {
-	Points			[0, -95]
-	DstBlock		"Scope"
-	DstPort			2
-      }
-      Branch {
-	DstBlock		"Discrete-Time Integrator1"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Discrete-Time Integrator1"
-      SrcPort		      1
-      Points		      [44, 0]
-      Branch {
-	Points			[0, 65; -422, 0; 0, -65]
-	DstBlock		"Spool Controller"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -85]
-	DstBlock		"Scope"
-	DstPort			3
-      }
-    }
-    Line {
-      SrcBlock		      "Reset"
-      SrcPort		      1
-      DstBlock		      "Mux"
+      Points		      [34, 0; 0, 20]
+      DstBlock		      "Scope"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "CLK"
+      SrcBlock		      "Data Store\nRead"
       SrcPort		      1
-      Points		      [93, 0; 0, -75]
-      DstBlock		      "Mux"
-      DstPort		      3
+      Points		      [42, 0; 0, 15]
+      DstBlock		      "Scope"
+      DstPort		      2
     }
   }
 }
@@ -1571,338 +1444,14 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "StateSwitch"
+    name		    "StringPayout"
     created		    "14-Apr-2014 16:47:08"
     isLibrary		    0
-    firstTarget		    20
+    firstTarget		    2
     sfVersion		    76014001.001
   }
-  chart {
-    id			    2
-    name		    "Spool Controller"
-    windowPosition	    [169.5 246.75 417 348.75]
-    viewLimits		    [-6.273 1115.727 -79.608 481.392]
-    zoomFactor		    1.333
-    stateColor		    [0.3803921568627451 0.2745098039215687 0.1803921568627451]
-    stateLabelColor	    [0.4588235294117647 0.2980392156862745 0.1411764705882353]
-    transitionColor	    [0.3215686274509804 0.5450980392156862 0.7725490196078432]
-    transitionLabelColor    [0.3215686274509804 0.5450980392156862 0.7725490196078432]
-    junctionColor	    [0.7764705882352941 0.4980392156862745 0]
-    chartColor		    [1 0.9882352941176471 0.9254901960784314]
-    screen		    [1 1 1920 1200 1.333333333333333]
-    treeNode		    [0 6 0 0]
-    firstTransition	    15
-    viewObj		    2
-    visible		    1
-    machine		    1
-    subviewS {
-    }
-    ssIdHighWaterMark	    44
-    decomposition	    CLUSTER_CHART
-    firstEvent		    12
-    firstData		    10
-    chartFileNumber	    1
-    saturateOnIntegerOverflow 1
-    userSpecifiedStateTransitionExecutionOrder 1
-    disableImplicitCasting  1
-  }
-  state {
-    id			    3
-    labelString		    "AddSlack\nentry: Cmd = 0;\nduring: Cmd = PIDLoop(Spool, 3);"
-    position		    [295 54.5 273 167]
-    fontSize		    12
-    chart		    2
-    treeNode		    [2 4 6 5]
-    visible		    0
-    subviewer		    2
-    ssIdNumber		    11
-    type		    OR_STATE
-    decomposition	    CLUSTER_STATE
-  }
-  state {
-    id			    4
-    labelString		    "Out = PIDLoop(Spool_pos,Desired)"
-    position		    [313.6667 140.1667 209 74]
-    fontSize		    12
-    chart		    2
-    treeNode		    [3 0 0 0]
-    superState		    SUBCHART
-    visible		    0
-    subviewer		    2
-    ssIdNumber		    7
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    firstData		    7
-    simulink {
-      isSimulinkFcn	      1
-      blockName		      "AddSlack.PIDLoop"
-    }
-  }
-  state {
-    id			    5
-    labelString		    "PassiveSpool\nentry: Cmd = 0;"
-    position		    [639.6667 56 194.6667 138]
-    fontSize		    12
-    chart		    2
-    treeNode		    [2 0 3 0]
-    visible		    0
-    subviewer		    2
-    ssIdNumber		    12
-    type		    OR_STATE
-    decomposition	    CLUSTER_STATE
-  }
-  state {
-    id			    6
-    labelString		    "HoldTight\nentry: Cmd  = 6;"
-    position		    [21.3333 54.5 179 138]
-    fontSize		    12
-    chart		    2
-    treeNode		    [2 0 0 3]
-    visible		    0
-    subviewer		    2
-    ssIdNumber		    10
-    type		    OR_STATE
-    decomposition	    CLUSTER_STATE
-  }
-  data {
-    id			    7
-    ssIdNumber		    22
-    name		    "Out"
-    linkNode		    [4 0 8]
-    scope		    FUNCTION_OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-	isDynamic		1
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    8
-    ssIdNumber		    23
-    name		    "Spool_pos"
-    linkNode		    [4 7 9]
-    scope		    FUNCTION_INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    9
-    ssIdNumber		    24
-    name		    "Desired"
-    linkNode		    [4 8 0]
-    scope		    FUNCTION_INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    10
-    ssIdNumber		    42
-    name		    "Spool"
-    linkNode		    [2 0 11]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    11
-    ssIdNumber		    43
-    name		    "Cmd"
-    linkNode		    [2 10 0]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      type {
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "double"
-  }
-  event {
-    id			    12
-    ssIdNumber		    34
-    name		    "Reset"
-    linkNode		    [2 0 13]
-    scope		    INPUT_EVENT
-    trigger		    FALLING_EDGE_EVENT
-    machine		    1
-  }
-  event {
-    id			    13
-    ssIdNumber		    39
-    name		    "Trig"
-    linkNode		    [2 12 14]
-    scope		    INPUT_EVENT
-    trigger		    RISING_EDGE_EVENT
-    machine		    1
-  }
-  event {
-    id			    14
-    ssIdNumber		    44
-    name		    "CLK"
-    linkNode		    [2 13 0]
-    scope		    INPUT_EVENT
-    trigger		    EITHER_EDGE_EVENT
-    machine		    1
-  }
-  transition {
-    id			    15
-    labelString		    ""
-    labelPosition	    [733.24 41 0 0]
-    fontSize		    12
-    src {
-      intersection	      [0 -0 1 0 733.2397 26 0 0]
-    }
-    dst {
-      id		      5
-      intersection	      [1 0 -1 0.4807 733.2397 56 0 0]
-    }
-    midPoint		    [733.2397 41]
-    chart		    2
-    linkNode		    [2 0 16]
-    dataLimits		    [730.84 735.64 26 56]
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    40
-  }
-  transition {
-    id			    16
-    labelString		    "Trig"
-    labelPosition	    [241.862 112.47 21.75 17]
-    fontSize		    12
-    src {
-      id		      6
-      intersection	      [2 1 0 0.5264 200.3333 127.1364 0 0]
-    }
-    dst {
-      id		      3
-      intersection	      [4 -1 -0 0.5651 295 127.1364 0 0]
-    }
-    midPoint		    [243.6667 127.1364]
-    chart		    2
-    linkNode		    [2 15 17]
-    dataLimits		    [200.333 295 124.736 129.536]
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    17
-  }
-  transition {
-    id			    17
-    labelString		    "[Spool >=3] "
-    labelPosition	    [576.505 112.655 66.5 17]
-    fontSize		    12
-    src {
-      id		      3
-      intersection	      [2 1 0 0.45 568 129.6555 0 0]
-    }
-    dst {
-      id		      5
-      intersection	      [4 -1 -0 0.4663 639.6667 129.6555 0 0]
-    }
-    midPoint		    [599.8333 129.6555]
-    chart		    2
-    linkNode		    [2 16 18]
-    dataLimits		    [568 639.667 127.255 132.055]
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    18
-  }
-  transition {
-    id			    18
-    labelString		    "Reset"
-    labelPosition	    [390.05 336.289 33.5 17]
-    fontSize		    12
-    src {
-      id		      5
-      intersection	      [3 0 1 0.5285 731.4439 194 0 0]
-    }
-    dst {
-      id		      6
-      intersection	      [3 0 1 0.5211 107.0561 192.5 0 0]
-    }
-    midPoint		    [419.25 353.3554]
-    chart		    2
-    linkNode		    [2 17 0]
-    dataLimits		    [104.656 731.444 192.5 353.272]
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    33
-  }
-  instance {
-    id			    19
-    name		    "Spool Controller"
-    machine		    1
-    chart		    2
-  }
   target {
-    id			    20
+    id			    2
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1
