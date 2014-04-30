@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.59"
+    ComputedModelVersion    "1.61"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -53,11 +53,11 @@ Model {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"99"
 	Extents			[1016.0, 564.0]
 	ZoomFactor		[1.0]
-	Offset			[52.000000000000455, 30.366666666666788]
+	Offset			[0.0, 0.0]
       }
     }
   }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "LukePH"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Apr 10 08:10:34 2014"
-  RTWModifiedTimeStamp	  318427673
-  ModelVersionFormat	  "1.%<AutoIncrement:59>"
+  LastModifiedDate	  "Wed Apr 16 10:26:04 2014"
+  RTWModifiedTimeStamp	  319544763
+  ModelVersionFormat	  "1.%<AutoIncrement:61>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -904,15 +904,6 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      Step
-      Time		      "1"
-      Before		      "0"
-      After		      "1"
-      SampleTime	      "-1"
-      VectorParams1D	      on
-      ZeroCross		      on
-    }
-    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -956,7 +947,7 @@ Model {
   System {
     Name		    "armTemplate"
     Location		    [338, 105, 1404, 843]
-    Open		    on
+    Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -969,7 +960,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "109"
+    SIDHighWatermark	    "122"
     Block {
       BlockType		      Reference
       Name		      "Analog input"
@@ -1002,11 +993,11 @@ Model {
       BlockType		      Mux
       Name		      "Mux1"
       SID		      "95"
-      Ports		      [2, 1]
-      Position		      [365, 155, 370, 195]
+      Ports		      [3, 1]
+      Position		      [500, 175, 505, 215]
       ZOrder		      99
       ShowName		      off
-      Inputs		      "2"
+      Inputs		      "3"
       DisplayOption	      "bar"
     }
     Block {
@@ -1404,7 +1395,7 @@ Model {
       Name		      "Scope (xPC) 1"
       SID		      "69"
       Ports		      [1]
-      Position		      [405, 145, 495, 205]
+      Position		      [550, 165, 640, 225]
       ZOrder		      92
       LibraryVersion	      "1.1758"
       SourceBlock	      "xpclib/Misc./Scope (xPC) "
@@ -1487,7 +1478,7 @@ Model {
       System {
 	Name			"Set-up"
 	Location		[338, 105, 1404, 843]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1675,10 +1666,17 @@ Model {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "Do Not Zero"
+	  Name			  "Do Not Zero Arm"
 	  SID			  "107"
 	  Position		  [50, 310, 80, 340]
 	  ZOrder		  63
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Do Not Zero Spool"
+	  SID			  "122"
+	  Position		  [50, 360, 80, 390]
+	  ZOrder		  99
 	}
 	Block {
 	  BlockType		  Reference
@@ -1701,15 +1699,6 @@ Model {
 	  upperReset		  "[1]"
 	  upperValue		  "[0]"
 	}
-	Block {
-	  BlockType		  Step
-	  Name			  "Zero On Start"
-	  SID			  "109"
-	  Position		  [50, 370, 80, 400]
-	  ZOrder		  98
-	  Time			  "2"
-	  SampleTime		  "0"
-	}
 	Line {
 	  ZOrder		  1
 	  SrcBlock		  "Disable NST"
@@ -1729,18 +1718,124 @@ Model {
 	}
 	Line {
 	  ZOrder		  4
-	  SrcBlock		  "Do Not Zero"
+	  SrcBlock		  "Do Not Zero Arm"
 	  SrcPort		  1
 	  DstBlock		  "Digital output"
 	  DstPort		  18
 	}
 	Line {
-	  ZOrder		  5
-	  SrcBlock		  "Zero On Start"
+	  ZOrder		  6
+	  SrcBlock		  "Do Not Zero Spool"
 	  SrcPort		  1
-	  Points		  [42, 0; 0, -40]
+	  Points		  [47, 0; 0, -30]
 	  DstBlock		  "Digital output"
 	  DstPort		  20
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "String Angle Encoder"
+      SID		      "120"
+      Ports		      [0, 1]
+      Position		      [220, 240, 310, 280]
+      ZOrder		      114
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"String Angle Encoder"
+	Location		[338, 105, 1404, 843]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Reference
+	  Name			  "EncoderPos2"
+	  SID			  "117"
+	  Ports			  [1, 1]
+	  Position		  [450, 90, 545, 140]
+	  ZOrder		  112
+	  LibraryVersion	  "1.4"
+	  SourceBlock		  "xpcutilitieslib/Bit Packing "
+	  SourceType		  "xpcbitpacking"
+	  MaskBitPatterns	  "{[0:12]}"
+	  MaskPackDataType	  "int32"
+	  MaskPackDataSize	  "[1]"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SSIM2"
+	  SID			  "118"
+	  Ports			  [0, 1]
+	  Position		  [200, 75, 400, 155]
+	  ZOrder		  111
+	  LibraryVersion	  "1.218"
+	  SourceBlock		  "speedgoatlib_IO301/SSI/SSIM"
+	  SourceType		  "ssim_fpga_a1"
+	  id			  "1"
+	  chan			  "[3]"
+	  coding		  "Binary"
+	  clockDivider		  "[200]"
+	  wordSize		  "[13]"
+	  TL			  "[0]"
+	  TP			  "[990]"
+	  ssiminv		  off
+	  ts			  "Ts"
+	  pciSlot		  "-1"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "To Rad1"
+	  SID			  "119"
+	  Position		  [580, 100, 610, 130]
+	  ZOrder		  113
+	  Gain			  "(2*pi)/(2^13)"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "double"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "String Angle(rad)"
+	  SID			  "121"
+	  Position		  [670, 108, 700, 122]
+	  ZOrder		  114
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  123
+	  SrcBlock		  "To Rad1"
+	  SrcPort		  1
+	  DstBlock		  "String Angle(rad)"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  121
+	  SrcBlock		  "EncoderPos2"
+	  SrcPort		  1
+	  DstBlock		  "To Rad1"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  120
+	  SrcBlock		  "SSIM2"
+	  SrcPort		  1
+	  DstBlock		  "EncoderPos2"
+	  DstPort		  1
 	}
       }
     }
@@ -1783,6 +1878,7 @@ Model {
       ZOrder		      109
       SrcBlock		      "Read Encoders"
       SrcPort		      1
+      Points		      [90, 0; 0, 15]
       DstBlock		      "Mux1"
       DstPort		      1
     }
@@ -1797,9 +1893,16 @@ Model {
       ZOrder		      113
       SrcBlock		      "Read Encoders"
       SrcPort		      2
-      Points		      [35, 0]
       DstBlock		      "Mux1"
       DstPort		      2
+    }
+    Line {
+      ZOrder		      123
+      SrcBlock		      "String Angle Encoder"
+      SrcPort		      1
+      Points		      [91, 0; 0, -50]
+      DstBlock		      "Mux1"
+      DstPort		      3
     }
   }
 }
