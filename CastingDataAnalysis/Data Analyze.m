@@ -1,7 +1,7 @@
 % Bad Cast 1: Stopped short, tangled on self
 % Bad Cast 2: ditto
 % Good Cast:  Made it over bar, suspended at end.
-clear
+clearvars -except Ts tg
 close all
 % 1 Arm pos (rad)
 % 2 Arm target pos (rad)
@@ -12,11 +12,13 @@ close all
 
 % GC = load('BadBasicCastDataLog.mat');
 % GC = load('BadBasicCast2DataLog.mat');
-GC  = load('GoodCastDataLog.mat');
-% GC = load('AlmostFlat.mat');
+% GC  = load('GoodCastDataLog.mat');
+% GC = load('AlmostFlatv2.mat');
+GC = load('ByHandCast.mat');
+% GC = load('ByHandCastAlmost.mat');
 
 % Time Frames
-plot_from = [21, 26];
+plot_from = [0, 60000];
 i = find(plot_from(1) < GC.fsTime, 1, 'first');
 j = find(plot_from(2) > GC.fsTime, 1, 'last');
 
