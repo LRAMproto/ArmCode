@@ -12,13 +12,14 @@ close all
 
 % GC = load('BadBasicCastDataLog.mat');
 % GC = load('BadBasicCast2DataLog.mat');
-% GC  = load('GoodCastDataLog.mat');
-% GC = load('AlmostFlatv2.mat');
-GC = load('ByHandCast.mat');
+GC  = load('GoodCastDataLog.mat');
+% GC = load('AlmostFlat.mat');
+% GC = load('ByHandCast.mat');
 % GC = load('ByHandCastAlmost.mat');
+% plot_from = [4,9];
 
 % Time Frames
-plot_from = [0, 60000];
+plot_from = [21, 26];
 i = find(plot_from(1) < GC.fsTime, 1, 'first');
 j = find(plot_from(2) > GC.fsTime, 1, 'last');
 
@@ -44,6 +45,7 @@ xlabel('sec')
 ylabel('rad or amps')
 legend('Spool pos','Cmd amps', 'Location', 'SouthEast')
 
+% String Angle
 figure
 [hA, h_b1, h_b2] = plotyy(GC.fsTime(i:j), GC.fsData(i:j,6),...
                            GC.fsTime(i+1:j), diff(GC.fsData(i:j,6))./diff(GC.fsTime(i:j)));
@@ -55,7 +57,7 @@ ylabel(hA(2), 'rad/sec')
 legend('position', 'velocity', 'Location', 'SouthEast')
 
 figure
-[hAx, h_l1, h_l2] = plotyy(GC.fsTime(i:j), GC.fsData(i:j,[1,2,6]),...
+[hAx, h_l1, h_l2] = plotyy(5,...
                            GC.fsTime(i:j), GC.fsData(i:j,[4]));
 line([GC.fsTime(t_re),GC.fsTime(t_re)],[0,10],'Color',[.4,.4,.4])
 xlabel('sec')
@@ -63,3 +65,5 @@ ylabel(hAx(1), 'rad')
 ylabel(hAx(2), 'Spool (rad)')
 legend('Arm Pos', 'Arm Target', 'String Angle', 'Spool',...
        'Location', 'NorthWest')
+   
+% animationArm(plot_from, GC)
