@@ -3,6 +3,7 @@
 % Good Cast:  Made it over bar, suspended at end.
 clearvars -except Ts tg
 close all
+% Which column in the vector contains the which data
 % 1 Arm pos (rad)
 % 2 Arm target pos (rad)
 % 3 Arm Cmd (amps)
@@ -12,14 +13,15 @@ close all
 
 % GC = load('BadBasicCastDataLog.mat');
 % GC = load('BadBasicCast2DataLog.mat');
-GC  = load('GoodCastDataLog.mat');
+% GC  = load('GoodCastDataLog.mat');
+GC = load('ByHandCastHit.mat');
 % GC = load('AlmostFlat.mat');
 % GC = load('ByHandCast.mat');
 % GC = load('ByHandCastAlmost.mat');
 % plot_from = [4,9];
 
 % Time Frames
-plot_from = [21, 26];
+plot_from = [30, 40];
 i = find(plot_from(1) < GC.fsTime, 1, 'first');
 j = find(plot_from(2) > GC.fsTime, 1, 'last');
 
@@ -57,13 +59,13 @@ ylabel(hA(2), 'rad/sec')
 legend('position', 'velocity', 'Location', 'SouthEast')
 
 figure
-[hAx, h_l1, h_l2] = plotyy(5,...
+[hAx, h_l1, h_l2] = plotyy(GC.fsTime(i:j), GC.fsData(i:j,[1:3]),...
                            GC.fsTime(i:j), GC.fsData(i:j,[4]));
 line([GC.fsTime(t_re),GC.fsTime(t_re)],[0,10],'Color',[.4,.4,.4])
 xlabel('sec')
 ylabel(hAx(1), 'rad')
 ylabel(hAx(2), 'Spool (rad)')
-legend('Arm Pos', 'Arm Target', 'String Angle', 'Spool',...
+legend('Arm Pos', 'Arm Target', 'Arm Cmd',...
        'Location', 'NorthWest')
    
 % animationArm(plot_from, GC)

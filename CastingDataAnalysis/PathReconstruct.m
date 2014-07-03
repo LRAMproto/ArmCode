@@ -12,12 +12,12 @@ close all
 
 % GC = load('BadBasicCastDataLog.mat');
 % GC = load('BadBasicCast2DataLog.mat');
-GC  = load('GoodCastDataLog.mat');
-% GC = load('AlmostFlat.mat');
+% GC  = load('GoodCastDataLog.mat');
+GC = load('AlmostFlat.mat');
 
 % Time Frames
-plot_from = [21, 26];
-% plot_from = [51, 56];
+% plot_from = [21, 26];
+plot_from = [51, 56];
 i = find(plot_from(1) < GC.fsTime, 1, 'first');
 j = find(plot_from(2) > GC.fsTime, 1, 'last');
 
