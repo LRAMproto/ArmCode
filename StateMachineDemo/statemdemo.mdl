@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.3"
+    ComputedModelVersion    "1.7"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -30,7 +30,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1775.0, 118.0, 802.0, 708.0]
+      Location		      [1714.0, 99.0, 882.0, 775.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -39,7 +39,7 @@ Model {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -54,9 +54,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[569.0, 541.0]
+	Extents			[649.0, 608.0]
 	ZoomFactor		[1.0]
-	Offset			[-9.0, -6.0]
+	Offset			[-22.250796292975906, -44.05545383495685]
       }
     }
   }
@@ -66,9 +66,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "caster"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jul 31 14:32:53 2014"
-  RTWModifiedTimeStamp	  328715569
-  ModelVersionFormat	  "1.%<AutoIncrement:3>"
+  LastModifiedDate	  "Thu Jul 31 17:11:28 2014"
+  RTWModifiedTimeStamp	  328724539
+  ModelVersionFormat	  "1.%<AutoIncrement:7>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -106,7 +106,7 @@ Model {
     $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "statemdemo"
-    overrideMode_	    [0U]
+    overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
@@ -784,7 +784,7 @@ Model {
   }
   System {
     Name		    "statemdemo"
-    Location		    [1775, 118, 2577, 826]
+    Location		    [1714, 99, 2596, 874]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -798,200 +798,203 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "21"
+    SIDHighWatermark	    "22"
     Block {
       BlockType		      Constant
-      Name		      "Constant"
-      SID		      "8"
-      Position		      [55, 155, 85, 185]
-      ZOrder		      8
-      Value		      "1111"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant1"
+      Name		      "Accellerating"
       SID		      "9"
-      Position		      [100, 185, 130, 215]
+      Position		      [205, 210, 235, 240]
       ZOrder		      9
       Value		      "2222"
     }
     Block {
       BlockType		      Constant
-      Name		      "Constant2"
+      Name		      "FreeFlightCheck\n"
       SID		      "10"
-      Position		      [55, 240, 85, 270]
+      Position		      [130, 210, 160, 240]
       ZOrder		      10
       Value		      "3333"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant3"
-      SID		      "11"
-      Position		      [55, 335, 85, 365]
-      ZOrder		      11
-      Value		      "4444"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant4"
-      SID		      "12"
-      Position		      [120, 380, 150, 410]
-      ZOrder		      12
-      Value		      "5555"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant5"
-      SID		      "13"
-      Position		      [105, 430, 135, 460]
-      ZOrder		      13
-      Value		      "6666"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant6"
-      SID		      "14"
-      Position		      [125, 490, 155, 520]
-      ZOrder		      14
-      Value		      "7777"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant7"
-      SID		      "15"
-      Position		      [90, 545, 120, 575]
-      ZOrder		      15
-      Value		      "-1"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant8"
-      SID		      "16"
-      Position		      [20, 105, 50, 135]
-      ZOrder		      16
-      Value		      "-9999"
-    }
-    Block {
-      BlockType		      Display
-      Name		      "Display"
-      SID		      "5"
-      Ports		      [1]
-      Position		      [425, 105, 515, 135]
-      ZOrder		      5
-      Decimation	      "1"
-      Lockdown		      off
-    }
-    Block {
-      BlockType		      Display
-      Name		      "Display1"
-      SID		      "21"
-      Ports		      [1]
-      Position		      [300, 35, 390, 65]
-      ZOrder		      21
-      Decimation	      "1"
-      Lockdown		      off
     }
     Block {
       BlockType		      MultiPortSwitch
       Name		      "Multiport Switch"
       SID		      "20"
       Ports		      [10, 1]
-      Position		      [320, 111, 350, 364]
+      Position		      [356, 145, 609, 175]
       ZOrder		      20
+      BlockRotation	      270
       DataPortOrder	      "Zero-based contiguous"
       Inputs		      "9"
       InputSameDT	      off
       SaturateOnIntegerOverflow	off
     }
     Block {
+      BlockType		      Constant
+      Name		      "Out of Lower Bound"
+      SID		      "16"
+      Position		      [20, 210, 50, 240]
+      ZOrder		      16
+      Value		      "-9999"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Out of Upper Bound"
+      SID		      "15"
+      Position		      [20, 265, 50, 295]
+      ZOrder		      15
+      Value		      "-1111"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Output Signal"
+      SID		      "5"
+      Ports		      [1]
+      Position		      [515, 85, 605, 115]
+      ZOrder		      5
+      Decimation	      "1"
+      Lockdown		      off
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Ready"
+      SID		      "8"
+      Position		      [260, 210, 290, 240]
+      ZOrder		      8
+      Value		      "1111"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Rearming"
+      SID		      "14"
+      Position		      [130, 315, 160, 345]
+      ZOrder		      14
+      Value		      "7777"
+    }
+    Block {
       BlockType		      M-S-Function
       Name		      "STATE MACHINE"
       SID		      "6"
       Ports		      [0, 1]
-      Position		      [100, 19, 155, 51]
+      Position		      [50, 84, 105, 116]
       ZOrder		      6
       FunctionName	      "statemachinesfun"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Spooling"
+      SID		      "11"
+      Position		      [335, 315, 365, 345]
+      ZOrder		      11
+      Value		      "4444"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "State Value"
+      SID		      "21"
+      Ports		      [1]
+      Position		      [175, 45, 265, 75]
+      ZOrder		      21
+      Decimation	      "1"
+      Lockdown		      off
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Stopped"
+      SID		      "13"
+      Position		      [205, 315, 235, 345]
+      ZOrder		      13
+      Value		      "6666"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Wrapping"
+      SID		      "12"
+      Position		      [260, 315, 290, 345]
+      ZOrder		      12
+      Value		      "5555"
     }
     Line {
       SrcBlock		      "STATE MACHINE"
       SrcPort		      1
-      Points		      [82, 0; 0, 90; 32, 0]
+      Points		      [18, 0]
       Branch {
-	Points			[0, -75]
-	DstBlock		"Display1"
+	Points			[0, -40]
+	DstBlock		"State Value"
 	DstPort			1
       }
       Branch {
+	Points			[0, 90]
 	DstBlock		"Multiport Switch"
 	DstPort			1
       }
     }
     Line {
-      SrcBlock		      "Constant"
+      SrcBlock		      "Ready"
       SrcPort		      1
-      Points		      [215, 0]
+      Points		      [4, 0; 0, 41; 121, 0]
       DstBlock		      "Multiport Switch"
       DstPort		      3
     }
     Line {
-      SrcBlock		      "Constant1"
+      SrcBlock		      "Accellerating"
       SrcPort		      1
+      Points		      [12, 0; 0, 55; 193, 0]
       DstBlock		      "Multiport Switch"
       DstPort		      4
     }
     Line {
-      SrcBlock		      "Constant2"
+      SrcBlock		      "FreeFlightCheck\n"
       SrcPort		      1
-      Points		      [67, 0; 0, -30]
+      Points		      [21, 0; 0, 78; 284, 0]
       DstBlock		      "Multiport Switch"
       DstPort		      5
     }
     Line {
-      SrcBlock		      "Constant3"
+      SrcBlock		      "Spooling"
       SrcPort		      1
-      Points		      [88, 0; 0, -100]
+      Points		      [125, 0]
       DstBlock		      "Multiport Switch"
       DstPort		      6
     }
     Line {
-      SrcBlock		      "Constant4"
+      SrcBlock		      "Wrapping"
       SrcPort		      1
-      Points		      [43, 0; 0, -120]
+      Points		      [18, 0; 0, 41; 207, 0]
       DstBlock		      "Multiport Switch"
       DstPort		      7
     }
     Line {
-      SrcBlock		      "Constant5"
+      SrcBlock		      "Stopped"
       SrcPort		      1
-      Points		      [75, 0; 0, -145]
+      Points		      [6, 0; 0, 55; 299, 0]
       DstBlock		      "Multiport Switch"
       DstPort		      8
     }
     Line {
-      SrcBlock		      "Constant6"
+      SrcBlock		      "Rearming"
       SrcPort		      1
-      Points		      [74, 0; 0, -180]
+      Points		      [19, 0; 0, 69; 386, 0]
       DstBlock		      "Multiport Switch"
       DstPort		      9
     }
     Line {
-      SrcBlock		      "Constant7"
+      SrcBlock		      "Out of Upper Bound"
       SrcPort		      1
-      Points		      [143, 0; 0, -210]
+      Points		      [56, 0; 0, 133; 484, 0]
       DstBlock		      "Multiport Switch"
       DstPort		      10
     }
     Line {
       SrcBlock		      "Multiport Switch"
       SrcPort		      1
-      Points		      [32, 0; 0, -120]
-      DstBlock		      "Display"
+      Points		      [0, -40]
+      DstBlock		      "Output Signal"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Constant8"
+      SrcBlock		      "Out of Lower Bound"
       SrcPort		      1
-      Points		      [109, 0; 0, 30]
+      Points		      [57, 0; 0, -25; 283, 0]
       DstBlock		      "Multiport Switch"
       DstPort		      2
     }
