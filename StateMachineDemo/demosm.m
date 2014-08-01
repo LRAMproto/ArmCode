@@ -1,5 +1,5 @@
 function caster = demosm()
-caster = CasterStateMachine('READY');
+caster = CasterStateMachine('STOP');
 fprintf('**Initializing...\n\n');
 set(caster,...
     'fireFcn',@fireFcn,...
