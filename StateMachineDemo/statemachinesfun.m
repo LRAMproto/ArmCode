@@ -12,12 +12,14 @@ block.RegBlockMethod('Start',@Start);
 block.RegBlockMethod('Update',@Update);
 block.SampleTimes = [ 0 0 ];
 
+if isempty(get_param(gcb,'UserData'))
+    connectStateMachine();
+end
+
 end
 
 function Start(block)
-    if ~isempty(get_param(gcb,'UserData'))
-        connectStateMachine();
-    end
+   
 end
 
 
