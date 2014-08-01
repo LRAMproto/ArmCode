@@ -22,7 +22,7 @@ function varargout = statecontrol(varargin)
 
 % Edit the above text to modify the response to help statecontrol
 
-% Last Modified by GUIDE v2.5 31-Jul-2014 14:33:18
+% Last Modified by GUIDE v2.5 31-Jul-2014 16:07:44
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -56,6 +56,7 @@ function statecontrol_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 connectStateMachine();
 handles.stateMachine = get_param('statemdemo/STATE MACHINE','UserData');
+UpdateInterface(hObject, eventdata, handles);
 set(handles.stateDisplay,'String',handles.stateMachine.state);
 % Update handles structure
 guidata(hObject, handles);
@@ -106,6 +107,28 @@ switch handles.stateMachine.state
         set(handles.firebutton,'String','Fire!');
 end
 set(handles.stateDisplay,'String',handles.stateMachine.state);
+UpdateInterface(hObject, eventdata, handles);
+
+
+function UpdateInterface(hObject, eventdata, handles)
+switch handles.stateMachine.state
+    case 'READY'
+        set(handles.firebutton,'String','Fire!');
+    case 'ACCEL'
+        set(handles.firebutton,'String','Release!');        
+    case 'RELEASE'
+        set(handles.firebutton,'String','Wrap11!');
+    case 'SPOOL'
+        set(handles.firebutton,'String','Wrap!');
+    case 'WRAP'
+        set(handles.firebutton,'String','Stop');
+    case 'STOP'
+        set(handles.firebutton,'String','Reset');
+    case 'REARM'
+        set(handles.firebutton,'String','Done Rearming.');     
+        
+end
+
 
 
 % --- Executes on button press in abortbutton.
@@ -118,3 +141,14 @@ notify(handles.stateMachine,'Error');
 set(handles.firebutton,'String','Reset');
 
 set(handles.stateDisplay,'String',handles.stateMachine.state);
+
+
+% --- Executes when user attempts to close figure1.
+function figure1_CloseRequestFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: delete(hObject) closes the figure
+notify(handles.stateMachine,'Error');
+delete(hObject);
