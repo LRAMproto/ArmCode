@@ -13,6 +13,6 @@ figure
 plot(fsTime, fsData);% Plot the data
 title('RawFileData');
 legend('actual', 'measured')
-save ByHandCastAlmost.mat fsTime fsData; % Save the data
+save SlackAnalyze.mat fsTime fsData; % Save the data
 
 clear sc fsys h fsysData dataLog scopeID ans
