@@ -1,13 +1,19 @@
 classdef Transition < hgsetget
 % FSM.Transition
-% Transition for FSM.StateMachine
+% Transition for FSM.StateMachine.
     
     properties
         initialState
+        % initial condition (FSM.State, '*' if absolute transition.
         input
+        % input (char)
         nextState
+        % next state (FSM.State)
         output
-        absolute = false
+        % Output (function_handle)
+        isAbsolute = false
+        % Tells you whether the function is an absolute rule (instructing
+        % the FSM to ignore the initial state).
         
     end
     
@@ -40,14 +46,20 @@ classdef Transition < hgsetget
                 fprintf('\n');
             end
         end
+        
         function result = MatchesAbs(obj,other)
-            if (obj.absolute || other.absolute) && isequal(obj.input,other.input)
+            % Determines the inputs of two transitions are the same, and if
+            % they are both absolute rules.
+            if (obj.isAbsolute || other.isAbsolute) ...
+                    && isequal(obj.input,other.input)
                 result = true;
             else
                 result = false;
             end
         end
+        
         function result = Matches(obj,other)
+            % Determines if a defined rule's intial state and input match.
             if isequal(obj.initialState,other.initialState) ...
                     && isequal(obj.input,other.input)
                 result = true;
