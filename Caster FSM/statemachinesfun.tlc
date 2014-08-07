@@ -1,0 +1,3 @@
+%% Target Language Compiler: The one line file that makes things compile.
+%% You will need one for EACH s function you make.
+%implements statemachinesfun "C"
