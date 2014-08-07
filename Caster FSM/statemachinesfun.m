@@ -1,4 +1,7 @@
 function statemachinesfun(block)
+% The following S-Function allows a state machine object to communicate its
+% state information with the rest of Simulink.
+
 setup(block);
 end
 
@@ -17,9 +20,12 @@ block.OutputPort(2).DataTypeID = 8;
 
 block.RegBlockMethod('Start',@Start);
 block.RegBlockMethod('Update',@Update);
-block.SampleTimes = [ 0 0 ];
+block.SampleTimes = [ -1 0 ];
 
 connectStateMachine('fsm_model/STATE MACHINE');
+% Initializes the state machine in its initial state and assigns it to
+% Userdata.
+
 end
 
 function Start(block)
@@ -30,7 +36,7 @@ end
 
 
 function Update(block)
-
+% Outputs state machine information.
 caster = get_param('fsm_model/STATE MACHINE','UserData');
 block.OutputPort(1).Data = caster.currentState.id;
 block.OutputPort(2).Data = caster.inTransition;
