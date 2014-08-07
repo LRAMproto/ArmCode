@@ -6,14 +6,18 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.4"
-    NumModelReferences	    1
+    ComputedModelVersion    "1.12"
+    NumModelReferences	    2
     ModelReference {
       ModelRefBlockPath	      "fsm_model_test/STATE MACHINE|fsm_model"
     }
+    ModelReference {
+      ModelRefBlockPath	      "fsm_model_test/STATE MACHINE MONITOR|fsm_monitor_model"
+    }
     NumTestPointedSignals   0
   }
-  SavedCharacterEncoding  "UTF-8"
+  RequirementInfo	  "{} %GIDa_df0a3179_6454_4361_a9b2_385228527c42"
+  SavedCharacterEncoding  "windows-1252"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -33,7 +37,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1188.0, 180.0, 1082.0, 720.0]
+      Location		      [134.0, 8.0, 1082.0, 717.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -57,9 +61,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[849.0, 544.0]
+	Extents			[837.0, 541.0]
 	ZoomFactor		[1.0]
-	Offset			[171.95645680741075, -79.631836740056031]
+	Offset			[176.5, -15.5]
       }
     }
   }
@@ -67,11 +71,11 @@ Model {
   Creator		  "caster"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "caster"
+  LastModifiedBy	  "davidrb"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Aug 06 16:47:47 2014"
-  RTWModifiedTimeStamp	  329243682
-  ModelVersionFormat	  "1.%<AutoIncrement:4>"
+  LastModifiedDate	  "Thu Aug 07 01:29:50 2014"
+  RTWModifiedTimeStamp	  329275751
+  ModelVersionFormat	  "1.%<AutoIncrement:12>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -176,7 +180,7 @@ Model {
 	  StartTime		  "0.0"
 	  StopTime		  "inf"
 	  AbsTol		  "auto"
-	  FixedStep		  "0.001"
+	  FixedStep		  "0.0001"
 	  InitialStep		  "auto"
 	  MaxNumMinSteps	  "-1"
 	  MaxOrder		  5
@@ -670,8 +674,8 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
-      CurrentDlgPage	      "Optimization"
-      ConfigPrmDlgPosition     [ 1, 28, 964, 871 ] 
+      CurrentDlgPage	      "Solver"
+      ConfigPrmDlgPosition     [ 208, 98, 1089, 648 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -749,16 +753,20 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      M-S-Function
-      FunctionName	      "matlabfile"
-      DisplayMFileStacktrace  on
-    }
-    Block {
       BlockType		      ModelReference
       SimulationMode	      "Accelerator"
       Variant		      off
       GeneratePreprocessorConditionals off
       CopyOfModelProtected    off
+    }
+    Block {
+      BlockType		      RateTransition
+      Integrity		      on
+      Deterministic	      on
+      X0		      "0"
+      OutPortSampleTimeOpt    "Specify"
+      OutPortSampleTimeMultiple	"1"
+      OutPortSampleTime	      "-1"
     }
     Block {
       BlockType		      Rounding
@@ -768,7 +776,7 @@ Model {
   }
   System {
     Name		    "fsm_model_test"
-    Location		    [-32, 463, 1050, 1183]
+    Location		    [134, 8, 1216, 725]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -782,54 +790,39 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "21"
+    SIDHighWatermark	    "30"
     Block {
       BlockType		      Display
-      Name		      "Display"
+      Name		      "Current State"
       SID		      "20"
       Ports		      [1]
-      Position		      [835, 10, 925, 40]
+      Position		      [745, 115, 820, 145]
       ZOrder		      36
       Decimation	      "1"
       Lockdown		      off
     }
     Block {
       BlockType		      Display
-      Name		      "Display1"
+      Name		      "In Transition"
       SID		      "21"
       Ports		      [1]
-      Position		      [805, 100, 895, 130]
+      Position		      [745, 160, 820, 190]
       ZOrder		      37
       Decimation	      "1"
       Lockdown		      off
     }
     Block {
-      BlockType		      M-S-Function
-      Name		      "Monitor"
-      SID		      "1"
-      Ports		      [1]
-      Position		      [585, 274, 640, 306]
-      ZOrder		      21
-      FunctionName	      "monitorsfun"
-    }
-    Block {
-      BlockType		      Reference
-      Name		      "Repeating Sequence"
-      SID		      "2"
-      Ports		      [0, 1]
-      Position		      [440, 190, 470, 220]
-      ZOrder		      24
-      LibraryVersion	      "1.281"
-      SourceBlock	      "simulink/Sources/Repeating\nSequence"
-      SourceType	      "Repeating table"
-      rep_seq_t		      "0:7"
-      rep_seq_y		      "[1:8]"
+      BlockType		      RateTransition
+      Name		      "Rate Transition"
+      SID		      "25"
+      Position		      [435, 218, 470, 292]
+      ZOrder		      41
     }
     Block {
       BlockType		      Rounding
       Name		      "Rounding Function"
       SID		      "3"
-      Position		      [495, 190, 525, 220]
+      Position		      [355, 160, 385, 190]
       ZOrder		      23
     }
     Block {
@@ -837,11 +830,11 @@ Model {
       Name		      "STATE MACHINE"
       SID		      "19"
       Ports		      [0, 2]
-      Position		      [490, 22, 700, 93]
+      Position		      [490, 117, 700, 188]
       ZOrder		      35
       ModelNameDialog	      "fsm_model"
       SimulationMode	      "Normal"
-      ModelReferenceVersion   "1.5"
+      ModelReferenceVersion   "1.8"
       List {
 	ListType		OutputPortNames
 	port0			"Current State ID"
@@ -856,48 +849,103 @@ Model {
       DefaultDataLogging      on
     }
     Block {
-      BlockType		      Display
-      Name		      "Signal ID"
-      SID		      "4"
+      BlockType		      ModelReference
+      Name		      "STATE MACHINE MONITOR"
+      SID		      "24"
       Ports		      [1]
-      Position		      [585, 190, 675, 220]
-      ZOrder		      22
-      Decimation	      "1"
-      Lockdown		      off
+      Position		      [490, 219, 700, 291]
+      ZOrder		      40
+      ModelNameDialog	      "fsm_monitor_model"
+      SimulationMode	      "Normal"
+      ModelReferenceVersion   "1.5"
+      List {
+	ListType		InputPortNames
+	port0			"Signal"
+      }
+      List {
+	ListType		InputPortLatchByCopyingInsideSignal
+	port0			"off"
+      }
+      CopyOfModelName	      "fsm_monitor_model"
+      DefaultDataLogging      on
+      List {
+	ListType		InputPortLatchByDelayingOutsideSignal
+	port0			"off"
+      }
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Sequence of Input Enums"
+      SID		      "26"
+      Ports		      [0, 1]
+      Position		      [280, 240, 310, 270]
+      ZOrder		      42
+      LibraryVersion	      "1.281"
+      SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
+      SourceType	      "Repeating Sequence Stair"
+      OutValues		      "[1 2 3 4 5 2 7]"
+      tsamp		      "4"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "double"
+      OutputDataTypeScalingMode	"double"
+      OutDataType	      "fixdt(0,8)"
+      ConRadixGroup	      "Best Precision: Vector-wise"
+      OutScaling	      "2^-12"
+      LockScale		      off
     }
     Line {
-      SrcBlock		      "Rounding Function"
+      SrcBlock		      "Sequence of Input Enums"
       SrcPort		      1
-      Points		      [29, 0]
-      Branch {
-	DstBlock		"Signal ID"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 50; -11, 0; 0, 35]
-	DstBlock		"Monitor"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Repeating Sequence"
-      SrcPort		      1
+      Points		      [11, 0; 0, -80]
       DstBlock		      "Rounding Function"
       DstPort		      1
     }
     Line {
       SrcBlock		      "STATE MACHINE"
       SrcPort		      2
-      Points		      [42, 0; 0, 40]
-      DstBlock		      "Display1"
+      Points		      [25, 0]
+      DstBlock		      "In Transition"
       DstPort		      1
     }
     Line {
       SrcBlock		      "STATE MACHINE"
       SrcPort		      1
-      Points		      [68, 0; 0, -15]
-      DstBlock		      "Display"
+      Points		      [25, 0]
+      DstBlock		      "Current State"
       DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Rounding Function"
+      SrcPort		      1
+      Points		      [31, 0; 0, 80]
+      DstBlock		      "Rate Transition"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Rate Transition"
+      SrcPort		      1
+      DstBlock		      "STATE MACHINE MONITOR"
+      DstPort		      1
+    }
+    Annotation {
+      SID		      "30"
+      Name		      "Written by David Rebhuhn, 2014"
+      Position		      [367, 42]
+    }
+    Annotation {
+      SID		      "27"
+      Name		      "The following is a test of the FSM model and the State Machine monitor.\nNote that both are enclose"
+      "d within a special block allowing them to be\naccessed directly, even when these models are in different files."
+      Position		      [280, 83]
+      HorizontalAlignment     "left"
+    }
+    Annotation {
+      SID		      "28"
+      Name		      "FSM Model Test"
+      Position		      [295, 8]
+      HorizontalAlignment     "left"
+      FontSize		      20
     }
   }
 }

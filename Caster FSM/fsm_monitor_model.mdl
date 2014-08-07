@@ -1,22 +1,16 @@
 Model {
-  Name			  "fsm_model"
+  Name			  "fsm_monitor_model"
   Version		  8.0
   MdlSubVersion		  0
   GraphicalInterface {
-    NumRootInports	    0
-    NumRootOutports	    2
-    Outport {
+    NumRootInports	    1
+    Inport {
       BusObject		      ""
-      BusOutputAsStruct	      "off"
-      Name		      "Current State ID"
+      Name		      "Signal"
     }
-    Outport {
-      BusObject		      ""
-      BusOutputAsStruct	      "off"
-      Name		      "In Transition"
-    }
+    NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.8"
+    ComputedModelVersion    "1.5"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -40,7 +34,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1312.0, 784.0]
+      Location		      [416.0, 269.0, 816.0, 538.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -64,21 +58,21 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1067.0, 608.0]
+	Extents			[571.0, 362.0]
 	ZoomFactor		[1.0]
-	Offset			[-154.52500231265992, -86.637499421834946]
+	Offset			[187.00000298023224, -95.749997109174728]
       }
     }
   }
-  Created		  "Wed Aug 06 13:35:57 2014"
-  Creator		  "caster"
+  Created		  "Wed Aug 06 21:35:57 2014"
+  Creator		  "davidrb"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "davidrb"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Aug 06 23:37:50 2014"
-  RTWModifiedTimeStamp	  329262676
-  ModelVersionFormat	  "1.%<AutoIncrement:8>"
+  LastModifiedDate	  "Wed Aug 06 22:59:37 2014"
+  RTWModifiedTimeStamp	  329266342
+  ModelVersionFormat	  "1.%<AutoIncrement:5>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -115,12 +109,12 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "fsm_model"
+    model_		    "fsm_monitor_model"
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "fsm_model"
+      Cell		      "fsm_monitor_model"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -183,7 +177,7 @@ Model {
 	  StartTime		  "0.0"
 	  StopTime		  "inf"
 	  AbsTol		  "auto"
-	  FixedStep		  "0.1"
+	  FixedStep		  "0.01"
 	  InitialStep		  "auto"
 	  MaxNumMinSteps	  "-1"
 	  MaxOrder		  5
@@ -296,7 +290,7 @@ Model {
 	  LifeSpan		  "inf"
 	  MaxStackSize		  "Inherit from target"
 	  BufferReusableBoundary  on
-	  SimCompilerOptimization "On"
+	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
 	  ParallelExecutionInRapidAccelerator on
 	}
@@ -677,9 +671,8 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
-      ExtraOptions	      "-aGenerateTraceInfo=0 -aIgnoreTestpoints=0 "
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 184, 8, 1113, 672 ] 
+      ConfigPrmDlgPosition     [ 208, 98, 1089, 648 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -757,13 +750,9 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      M-S-Function
-      FunctionName	      "matlabfile"
-      DisplayMFileStacktrace  on
-    }
-    Block {
-      BlockType		      Outport
+      BlockType		      Inport
       Port		      "1"
+      OutputFunctionCall      off
       OutMin		      "[]"
       OutMax		      "[]"
       OutDataTypeStr	      "Inherit: auto"
@@ -774,14 +763,19 @@ Model {
       SampleTime	      "-1"
       SignalType	      "auto"
       SamplingMode	      "auto"
-      SourceOfInitialOutputValue "Dialog"
-      OutputWhenDisabled      "held"
-      InitialOutput	      "[]"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      M-S-Function
+      FunctionName	      "matlabfile"
+      DisplayMFileStacktrace  on
     }
   }
   System {
-    Name		    "fsm_model"
-    Location		    [-8, -8, 1304, 776]
+    Name		    "fsm_monitor_model"
+    Location		    [416, 269, 1232, 807]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -795,104 +789,72 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "30"
+    SIDHighWatermark	    "9"
     Block {
-      BlockType		      Display
-      Name		      "STATE"
-      SID		      "3"
-      Ports		      [1]
-      Position		      [335, 20, 425, 50]
-      ZOrder		      3
-      Decimation	      "1"
-      Lockdown		      off
+      BlockType		      Inport
+      Name		      "Signal"
+      SID		      "2"
+      Position		      [180, 168, 210, 182]
+      ZOrder		      23
+      IconDisplay	      "Port number"
     }
     Block {
       BlockType		      M-S-Function
-      Name		      "STATE MACHINE"
+      Name		      "Monitor"
       SID		      "1"
-      Ports		      [0, 2]
-      Position		      [175, 109, 295, 191]
-      ZOrder		      1
-      FunctionName	      "statemachinesfun"
+      Ports		      [1]
+      Position		      [430, 0, 635, 140]
+      ZOrder		      22
+      FunctionName	      "monitorsfun"
       Object {
 	$PropName		"MaskObject"
 	$ObjectID		19
 	$ClassName		"Simulink.Mask"
-	Display			"port_label('output',1,'Current State ID');\nport_label('output',2,'In Transition');\n"
+	Display			"fprintf(caster_input_display_helper());\nport_label('input',1,'signal');"
       }
     }
     Block {
       BlockType		      Display
-      Name		      "Transitioning"
-      SID		      "4"
+      Name		      "Signal ID"
+      SID		      "3"
       Ports		      [1]
-      Position		      [320, 200, 410, 230]
-      ZOrder		      4
+      Position		      [295, 105, 385, 135]
+      ZOrder		      24
       Decimation	      "1"
       Lockdown		      off
     }
-    Block {
-      BlockType		      Outport
-      Name		      "Current State ID"
-      SID		      "21"
-      Position		      [440, 123, 470, 137]
-      ZOrder		      21
-      IconDisplay	      "Port number"
-    }
-    Block {
-      BlockType		      Outport
-      Name		      "In Transition"
-      SID		      "22"
-      Position		      [440, 163, 470, 177]
-      ZOrder		      22
-      Port		      "2"
-      IconDisplay	      "Port number"
-    }
     Line {
-      SrcBlock		      "STATE MACHINE"
+      SrcBlock		      "Signal"
       SrcPort		      1
-      Points		      [27, 0]
+      Points		      [57, 0; 0, -55]
       Branch {
-	DstBlock		"Current State ID"
+	DstBlock		"Signal ID"
 	DstPort			1
       }
       Branch {
-	Points			[0, -95]
-	DstBlock		"STATE"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "STATE MACHINE"
-      SrcPort		      2
-      Points		      [7, 0]
-      Branch {
-	DstBlock		"In Transition"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 45]
-	DstBlock		"Transitioning"
+	Points			[0, -50]
+	DstBlock		"Monitor"
 	DstPort			1
       }
     }
     Annotation {
-      SID		      "23"
-      Name		      "State Machine for Casting Robot"
-      Position		      [20, 63]
+      SID		      "4"
+      Name		      "This block accepts a transition input\nand determines which input to send \nto the FSM.StateMachine"
+      " class.."
+      Position		      [82, 125]
       HorizontalAlignment     "left"
     }
     Annotation {
-      SID		      "28"
-      Name		      "Caster FSM"
-      Position		      [22, 25]
+      SID		      "8"
+      Name		      "Caster FSM Monitor"
+      Position		      [82, 35]
       HorizontalAlignment     "left"
       FontSize		      20
     }
     Annotation {
-      SID		      "30"
+      SID		      "9"
       Name		      "Created by David Rebhuhn, 2014"
-      Position		      [20, 88]
+      Position		      [85, 58]
       HorizontalAlignment     "left"
     }
   }
