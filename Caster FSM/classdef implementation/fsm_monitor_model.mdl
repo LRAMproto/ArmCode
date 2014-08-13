@@ -1,23 +1,20 @@
 Model {
-  Name			  "fsm_model_test"
+  Name			  "fsm_monitor_model"
   Version		  8.0
   MdlSubVersion		  0
   GraphicalInterface {
-    NumRootInports	    0
+    NumRootInports	    1
+    Inport {
+      BusObject		      ""
+      Name		      "Signal"
+    }
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.12"
-    NumModelReferences	    2
-    ModelReference {
-      ModelRefBlockPath	      "fsm_model_test/STATE MACHINE|fsm_model"
-    }
-    ModelReference {
-      ModelRefBlockPath	      "fsm_model_test/STATE MACHINE MONITOR|fsm_monitor_model"
-    }
+    ComputedModelVersion    "1.6"
+    NumModelReferences	    0
     NumTestPointedSignals   0
   }
-  RequirementInfo	  "{} %GIDa_df0a3179_6454_4361_a9b2_385228527c42"
-  SavedCharacterEncoding  "windows-1252"
+  SavedCharacterEncoding  "UTF-8"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -37,7 +34,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [134.0, 8.0, 1082.0, 717.0]
+      Location		      [416.0, 269.0, 816.0, 538.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -61,21 +58,21 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[837.0, 541.0]
+	Extents			[571.0, 362.0]
 	ZoomFactor		[1.0]
-	Offset			[176.5, -15.5]
+	Offset			[187.00000298023224, -95.749997109174728]
       }
     }
   }
-  Created		  "Wed Aug 06 15:33:22 2014"
-  Creator		  "caster"
+  Created		  "Wed Aug 06 21:35:57 2014"
+  Creator		  "davidrb"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "davidrb"
+  LastModifiedBy	  "caster"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 07 01:29:50 2014"
-  RTWModifiedTimeStamp	  329275751
-  ModelVersionFormat	  "1.%<AutoIncrement:12>"
+  LastModifiedDate	  "Fri Aug 08 12:23:51 2014"
+  RTWModifiedTimeStamp	  329401392
+  ModelVersionFormat	  "1.%<AutoIncrement:6>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -112,12 +109,12 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "fsm_model_test"
+    model_		    "fsm_monitor_model"
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "fsm_model_test"
+      Cell		      "fsm_monitor_model"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -180,7 +177,7 @@ Model {
 	  StartTime		  "0.0"
 	  StopTime		  "inf"
 	  AbsTol		  "auto"
-	  FixedStep		  "0.0001"
+	  FixedStep		  "0.01"
 	  InitialStep		  "auto"
 	  MaxNumMinSteps	  "-1"
 	  MaxOrder		  5
@@ -260,7 +257,7 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  InlineParams		  off
+	  InlineParams		  on
 	  UseIntDivNetSlope	  off
 	  UseFloatMulNetSlope	  off
 	  UseSpecifiedMinMax	  off
@@ -367,7 +364,7 @@ Model {
 	  ModelReferenceCSMismatchMessage "none"
 	  UnknownTsInhSupMsg	  "warning"
 	  ModelReferenceDataLoggingMessage "warning"
-	  ModelReferenceSymbolNameMessage "warning"
+	  ModelReferenceSymbolNameMessage "none"
 	  ModelReferenceExtraNoncontSigs "error"
 	  StateNameClashWarn	  "warning"
 	  SimStateInterfaceChecksumMismatchMsg "warning"
@@ -674,6 +671,7 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
+      ExtraOptions	      "-aGenerateTraceInfo=0 -aIgnoreTestpoints=0 "
       CurrentDlgPage	      "Solver"
       ConfigPrmDlgPosition     [ 208, 98, 1089, 648 ] 
     }
@@ -753,31 +751,33 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      ModelReference
-      SimulationMode	      "Accelerator"
-      Variant		      off
-      GeneratePreprocessorConditionals off
-      CopyOfModelProtected    off
-    }
-    Block {
-      BlockType		      RateTransition
-      Integrity		      on
-      Deterministic	      on
-      X0		      "0"
-      OutPortSampleTimeOpt    "Specify"
-      OutPortSampleTimeMultiple	"1"
-      OutPortSampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Rounding
-      Operator		      "floor"
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
       SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      M-S-Function
+      FunctionName	      "matlabfile"
+      DisplayMFileStacktrace  on
     }
   }
   System {
-    Name		    "fsm_model_test"
-    Location		    [134, 8, 1216, 725]
-    Open		    on
+    Name		    "fsm_monitor_model"
+    Location		    [416, 269, 1232, 807]
+    Open		    off
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -790,162 +790,73 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "30"
+    SIDHighWatermark	    "9"
     Block {
-      BlockType		      Display
-      Name		      "Current State"
-      SID		      "20"
-      Ports		      [1]
-      Position		      [745, 115, 820, 145]
-      ZOrder		      36
-      Decimation	      "1"
-      Lockdown		      off
-    }
-    Block {
-      BlockType		      Display
-      Name		      "In Transition"
-      SID		      "21"
-      Ports		      [1]
-      Position		      [745, 160, 820, 190]
-      ZOrder		      37
-      Decimation	      "1"
-      Lockdown		      off
-    }
-    Block {
-      BlockType		      RateTransition
-      Name		      "Rate Transition"
-      SID		      "25"
-      Position		      [435, 218, 470, 292]
-      ZOrder		      41
-    }
-    Block {
-      BlockType		      Rounding
-      Name		      "Rounding Function"
-      SID		      "3"
-      Position		      [355, 160, 385, 190]
+      BlockType		      Inport
+      Name		      "Signal"
+      SID		      "2"
+      Position		      [180, 168, 210, 182]
       ZOrder		      23
+      IconDisplay	      "Port number"
     }
     Block {
-      BlockType		      ModelReference
-      Name		      "STATE MACHINE"
-      SID		      "19"
-      Ports		      [0, 2]
-      Position		      [490, 117, 700, 188]
-      ZOrder		      35
-      ModelNameDialog	      "fsm_model"
-      SimulationMode	      "Normal"
-      ModelReferenceVersion   "1.8"
-      List {
-	ListType		OutputPortNames
-	port0			"Current State ID"
-	port1			"In Transition"
-      }
-      List {
-	ListType		OutputPortOutputBusAsStructs
-	port0			"off"
-	port1			"off"
-      }
-      CopyOfModelName	      "fsm_model"
-      DefaultDataLogging      on
-    }
-    Block {
-      BlockType		      ModelReference
-      Name		      "STATE MACHINE MONITOR"
-      SID		      "24"
+      BlockType		      M-S-Function
+      Name		      "Monitor"
+      SID		      "1"
       Ports		      [1]
-      Position		      [490, 219, 700, 291]
-      ZOrder		      40
-      ModelNameDialog	      "fsm_monitor_model"
-      SimulationMode	      "Normal"
-      ModelReferenceVersion   "1.5"
-      List {
-	ListType		InputPortNames
-	port0			"Signal"
-      }
-      List {
-	ListType		InputPortLatchByCopyingInsideSignal
-	port0			"off"
-      }
-      CopyOfModelName	      "fsm_monitor_model"
-      DefaultDataLogging      on
-      List {
-	ListType		InputPortLatchByDelayingOutsideSignal
-	port0			"off"
+      Position		      [430, 0, 635, 140]
+      ZOrder		      22
+      FunctionName	      "monitorsfun"
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		19
+	$ClassName		"Simulink.Mask"
+	Display			"fprintf(caster_input_display_helper());\nport_label('input',1,'signal');"
       }
     }
     Block {
-      BlockType		      Reference
-      Name		      "Sequence of Input Enums"
-      SID		      "26"
-      Ports		      [0, 1]
-      Position		      [280, 240, 310, 270]
-      ZOrder		      42
-      LibraryVersion	      "1.281"
-      SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
-      SourceType	      "Repeating Sequence Stair"
-      OutValues		      "[1 2 3 4 5 2 7]"
-      tsamp		      "4"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "double"
-      OutputDataTypeScalingMode	"double"
-      OutDataType	      "fixdt(0,8)"
-      ConRadixGroup	      "Best Precision: Vector-wise"
-      OutScaling	      "2^-12"
-      LockScale		      off
+      BlockType		      Display
+      Name		      "Signal ID"
+      SID		      "3"
+      Ports		      [1]
+      Position		      [295, 105, 385, 135]
+      ZOrder		      24
+      Decimation	      "1"
+      Lockdown		      off
     }
     Line {
-      SrcBlock		      "Sequence of Input Enums"
+      SrcBlock		      "Signal"
       SrcPort		      1
-      Points		      [11, 0; 0, -80]
-      DstBlock		      "Rounding Function"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "STATE MACHINE"
-      SrcPort		      2
-      Points		      [25, 0]
-      DstBlock		      "In Transition"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "STATE MACHINE"
-      SrcPort		      1
-      Points		      [25, 0]
-      DstBlock		      "Current State"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Rounding Function"
-      SrcPort		      1
-      Points		      [31, 0; 0, 80]
-      DstBlock		      "Rate Transition"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Rate Transition"
-      SrcPort		      1
-      DstBlock		      "STATE MACHINE MONITOR"
-      DstPort		      1
+      Points		      [57, 0; 0, -55]
+      Branch {
+	DstBlock		"Signal ID"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -50]
+	DstBlock		"Monitor"
+	DstPort			1
+      }
     }
     Annotation {
-      SID		      "30"
-      Name		      "Written by David Rebhuhn, 2014"
-      Position		      [367, 42]
-    }
-    Annotation {
-      SID		      "27"
-      Name		      "The following is a test of the FSM model and the State Machine monitor.\nNote that both are enclose"
-      "d within a special block allowing them to be\naccessed directly, even when these models are in different files."
-      Position		      [280, 83]
+      SID		      "4"
+      Name		      "This block accepts a transition input\nand determines which input to send \nto the FSM.StateMachine"
+      " class.."
+      Position		      [82, 125]
       HorizontalAlignment     "left"
     }
     Annotation {
-      SID		      "28"
-      Name		      "FSM Model Test"
-      Position		      [295, 8]
+      SID		      "8"
+      Name		      "Caster FSM Monitor"
+      Position		      [82, 35]
       HorizontalAlignment     "left"
       FontSize		      20
+    }
+    Annotation {
+      SID		      "9"
+      Name		      "Created by David Rebhuhn, 2014"
+      Position		      [85, 58]
+      HorizontalAlignment     "left"
     }
   }
 }
