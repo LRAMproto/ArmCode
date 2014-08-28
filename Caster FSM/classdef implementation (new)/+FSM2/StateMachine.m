@@ -215,17 +215,16 @@ classdef StateMachine < hgsetget
             
             if (sz(2) == 2)
                 for k = 1:sz(1)
-                    if ~self.hasErrorFcns
+                    if ~self.HasDefinedErrorFcns()
                         self.f_error = transitions(k,:);
                         self.hasErrorFcns = true;
                     else
-                        self.f_error = union(self.f_error,transitions(k,:),'rows');
+                        self.f_error = union(...
+                            self.f_error,transitions(k,:),'rows');
                     end
                 end
             end
         end
-        
-        %TODO: Complete implementation to define error transitions
         
         %% AddInput(self, inpts) : Add Input Symbol
         % Adds an input symbol to the set $I$ of input symbols
@@ -249,11 +248,12 @@ classdef StateMachine < hgsetget
             sz = size(transitions);
             if (sz(2) == 3)
                 for k = 1:sz(1)
-                    if ~self.hasNextStateFcns
+                    if ~self.HasDefinedNSTs()
                         self.fs = transitions(k,:);
                         self.hasNextStateFcns = true;
                     else
-                        self.fs = union(self.fs,transitions(k,:),'rows');
+                        self.fs = union(...
+                            self.fs,transitions(k,:),'rows');
                     end
                 end
                 
@@ -265,6 +265,7 @@ classdef StateMachine < hgsetget
                         self.afs = union(self.afs,transitions(k,:),'rows');
                     end
                 end
+                
             elseif ~isempty(transitions)
                 entrystr = sprintf('%d ',transitions');
                 warning(['The entry [',entrystr,'is not recognized, ', ...
@@ -355,7 +356,11 @@ classdef StateMachine < hgsetget
             sz = size(stateTable);
             for j = 1:sz(1)
                 for k = 1:length(presentInput)
-                    nst = [stateTable(j,1),presentInput(k),stateTable(j,k+1)];
+                    nst = [...
+                        stateTable(j,1),...
+                        presentInput(k),...
+                        stateTable(j,k+1)];
+                    
                     self.AddNST(nst);
                 end
             end
@@ -469,8 +474,6 @@ classdef StateMachine < hgsetget
         % These methods occur during and after the initialization of the
         % state machine.
         
-        %QUESTION: Should the method 'Reset' be added as an option?
-        
         %% BeginTransition(self)
         % Changes the transition state of the machine to affirmative.
         % Remember to call 'endtransition' before throwing an error.
@@ -505,7 +508,6 @@ classdef StateMachine < hgsetget
         % Sets the current state of the machine, s_i (StateMachine.si) to
         % val and generates the appropriate output symbol.
         
-        %TODO: Set Initialize to check whether the state has the defined
         % output.
         
         function Initialize(self,val)
@@ -517,7 +519,6 @@ classdef StateMachine < hgsetget
             
             self.SetCurrentState(val);
             self.SetInitialState(val);
-            self.GenOutput();
             self.isInitialized = true;
             
             self.EndTransition();
@@ -544,7 +545,8 @@ classdef StateMachine < hgsetget
                     self.BeginTransition();
                     % Sets self into transition mode.
                     
-                    idx_nst = self.FindIdxOfNSTFor(self.GetCurrentState(), inpt);
+                    idx_nst = self.FindIdxOfNSTFor(...
+                        self.GetCurrentState(), inpt);
                     idx_anst = self.FindIdxOfANSTFor(inpt);
                     idx_e = self.FindIdxOfErrorFcnFor(inpt);
                     
@@ -564,30 +566,6 @@ classdef StateMachine < hgsetget
                         % recognized.
                     end
                     
-                    self.GenOutput();
-                    
-                    %                     if self.HasDefinedErrorFcns()
-                    %                         idx = find(ismember(self.f_error(:,1), inpt,'rows'),1);
-                    %                         if idx ~= -1
-                    %                             self.si = self.fs(idx,3);
-                    %                             self.GenOutput();
-                    %
-                    %                         end
-                    %                     elseif self.HasDefinedNSTs()
-                    %                         idx = self.FindIdxOfNST(self.si,inpt);
-                    %                         if idx ~= -1
-                    %                             self.SetCurrentState(self.fs(idx,3));
-                    %                             self.GenOutput();
-                    %
-                    %                         end
-                    %                     elseif self.HasDefinedANSTs()
-                    %                         idx = find(ismember(self.afs(:,1), inpt,'rows'),1);
-                    %                         if ~isempty(idx)
-                    %                             self.si = self.afs(idx,2);
-                    %                             self.GenOutput();
-                    %
-                    %                         end
-                    %                     end
                     self.EndTransition();
                 end
             end
@@ -667,13 +645,48 @@ classdef StateMachine < hgsetget
             self.DispUnreachableStates();
             self.DispUnusedInputs();
             self.DispUnusedOutputs();
-            
+            self.DispNSTs();
+            self.DispANSTs();
+            self.DispErrFcns();
+        end
+        
+        function DispANSTs(self)
+            if self.HasDefinedANSTs()
+                fprintf('\tANSTs (%d): \n',length(self.afs));
+                sz = size(self.afs);
+                for k = 1:sz(1);
+                    fprintf('\t\t(%d) = %d\n',...
+                        self.afs(k,1),self.afs(k,2));
+                end
+            end
+        end
+        
+        function DispNSTs(self)
+            if self.HasDefinedNSTs()
+                fprintf('\tNSTs (%d): \n',length(self.fs));
+                sz = size(self.fs);
+                for k = 1:sz(1);
+                    fprintf('\t\t%dX(%d) = %d\n',...
+                        self.fs(k,1),self.fs(k,2),self.fs(k,3));
+                end
+            end
+        end
+        
+        function DispErrFcns(self)
+            if self.HasDefinedErrorFcns()
+                fprintf('\tError Fcns (%d): \n',length(self.f_error));
+                sz = size(self.f_error);
+                for k = 1:sz(1);
+                    fprintf('\t\t(%d) = %d\n',...
+                        self.f_error(k,1),self.f_error(k,2));
+                end
+            end
         end
         
         function DispCurrentState(self)
             fprintf('\tCurrent State (si):\t');
-            if (~self.IsInitialized())                
-                fprintf('None\n');
+            if (~self.IsInitialized())
+                fprintf('Uninitialized\n');
             else
                 fprintf('%d\n',self.GetCurrentState());
             end
@@ -690,76 +703,108 @@ classdef StateMachine < hgsetget
         
         function DispReachableStates(self)
             fprintf('\tReachable States (S):\t');
-            states = self.GetReachableStates();
-            for k=1:length(states')
-                fprintf('%d, ',states(k));
+            if ~self.HasDefinedStates()
+                fprintf('None');
+            else
+                states = self.GetReachableStates();
+                for k=1:length(states')
+                    fprintf('%d, ',states(k));
+                end
             end
             fprintf('\n');
         end
-        function DispInputSymbols(self)            
+        function DispInputSymbols(self)
             fprintf('\tInput Symbols (I):\t');
-            inpts = self.GetInputs();
-            for k=1:length(inpts')
-                fprintf('%d, ',inpts(k));
+            if ~self.HasDefinedInputs()
+                fprintf('None');
+            else
+                inpts = self.GetAllInputs();
+                for k=1:length(inpts')
+                    fprintf('%d, ',inpts(k));
+                end
+                
             end
             fprintf('\n');
         end
         
         function DispOutputSymbols(self)
             fprintf('\tOutput Symbols (O):\t');
-            outpts = self.GetOutputs();
-            for k=1:length(outpts')
-                fprintf('%d, ',outpts(k));
+            if ~self.HasDefinedOutputs()
+                fprintf('None');
+            else
+                outpts = self.GetAllOutputs();
+                for k=1:length(outpts')
+                    fprintf('%d, ',outpts(k));
+                end
             end
             fprintf('\n');
         end
         
         function DispUnreachableStates(self)
-            
-            un_states = self.GetUnreachableStates();
-            if ~isempty(un_states)
-                fprintf('\tUnreachable States:\t');
-                for k = 1:length(un_states')
-                    fprintf('%d, ',un_states(k));
+            fprintf('\tUnreachable States:\t');
+            if ~self.HasDefinedStates()
+                fprintf('None');
+            else
+                un_states = self.GetUnreachableStates();
+                if ~isempty(un_states)
+                    
+                    for k = 1:length(un_states')
+                        fprintf('%d, ',un_states(k));
+                    end
                 end
-                fprintf('\n');
+                
             end
+            fprintf('\n');
         end
         
         function DispUnusedInputs(self)
-            un_inpts = self.GetUnusedInputs();
-            if ~isempty(un_inpts)
-                fprintf('\tUnused Inputs:\t');
-                for k = 1:length(un_inpts')
-                    fprintf('%d, ',un_inpts(k));
+            fprintf('\tUnused Inputs:\t');
+            if ~self.HasDefinedInputs()
+                fprintf('None');
+            else
+                un_inpts = self.GetUnusedInputs();
+                if ~isempty(un_inpts)
+                    for k = 1:length(un_inpts')
+                        fprintf('%d, ',un_inpts(k));
+                    end
+                    
                 end
-                fprintf('\n');
             end
+            fprintf('\n');
         end
         
         function DispUnusedOutputs(self)
-            un_outpts = self.GetUnusedOutputs();
-            if ~isempty(un_outpts)
-                fprintf('\tUnused Outputs:\t');
-                for k = 1:length(un_outpts')
-                    fprintf('%d, ',un_outpts(k));
+            fprintf('\tUnused Outputs:\t');
+            if (~self.HasDefinedOutputs())
+                fprintf('None');
+            else
+                un_outpts = self.GetUnusedOutputs();
+                if ~isempty(un_outpts)
+                    for k = 1:length(un_outpts')
+                        fprintf('%d, ',un_outpts(k));
+                    end
                 end
-                fprintf('\n');
                 
             end
+            fprintf('\n');
+            
         end
         
         %% *Information Retrieval Methods:*
         % The following methods retrieve useful information about the state
         % machine for internal and external use.
         
-        %% FindIdxOfNSTFor(self, state, inpt) : Finding a next-state transtion
+        %% FindIdxOfNSTFor(self, state, inpt)
         % Finds the index of an appropriate next-state transition. Returns
         % -1 if one is not present.
         
         function idx = FindIdxOfNSTFor(self, state, inpt)
             if self.HasDefinedNSTs()
-                idx = find(ismember(self.fs(:,1:2), [state, inpt],'rows'),1);
+                idx = find(ismember(...
+                    self.fs(:,1:2), ...
+                    [state, inpt],...
+                    'rows'),...
+                    1);
                 if isempty(idx)
                     idx = -1;
                 end
@@ -768,7 +813,7 @@ classdef StateMachine < hgsetget
             end
         end
         
-        %% FindIdxOfANSTFor(self,inpt) : Finding a next-state transtion
+        %% FindIdxOfANSTFor(self,inpt)
         % Finds the index of an appropriate next-state transition. Returns
         % -1 if one is not present.
         
@@ -783,7 +828,7 @@ classdef StateMachine < hgsetget
             end
         end
         
-        %% FindIdxOfErrorFcnFor(self,inpt) : Finding a next-state transtion
+        %% FindIdxOfErrorFcnFor(self,inpt)
         % Finds the index of an appropriate next-state transition. Returns
         % -1 if one is not present.
         
@@ -815,96 +860,184 @@ classdef StateMachine < hgsetget
         % Retrieves a list of initial states that have been defined for a
         % given state machine.
         
-        %FIXME: Extend GetInitialStates to account for ANSTs and ENSTs
-        
         function init_states = GetInitialStates(self)
-            if self.HasDefinedNSTs()
-                init_states = unique(self.fs(:,1));
-            else
+            % Note: Only NSTs have initial states.
+            if ~self.HasDefinedNSTs()
                 init_states = [];
+            else
+                init_states = self.GetInitialNSTStates();
             end
             
         end
         
-        %% GetInputs(self)
-        % Gets a set of inputs defined for the state machine.
         
-        %FIXME: Extend GetInputs to account for ANSTs and ENSTs
-        
-        %FIXME: Does GetInputs account for explicitly-defined inputs?
-        
-        function inpts = GetInputs(self)
-            if self.HasDefinedInputs()
-                inpts = unique([...
-                    self.fs(:,2)',...
-                    self.afs(:,1)',...
-                    self.f_error(:,1)...
-                    ]);
+        function init_states = GetInitialNSTStates(self)
+            if ~self.HasDefinedNSTs()
+                init_states = [];
             else
+                init_states = (unique(self.fs(:,1)))';
+            end
+        end
+        
+        %% GetAllInputs(self)
+        % Gets a set of inputs defined for the state machine. This accounts
+        % for both explicitly-defined and implicitly-defined inputs.
+        
+        function inpts = GetAllInputs(self)
+            inpts = unique([...
+                self.GetUsedInputs(), self.I_defined]);
+        end
+        %% GetUsedInputs(self)
+        % This function retrieves a list of inputs that are not necessarily
+        % explicitly defined, but are used within functions.
+        
+        function inpts = GetUsedInputs(self)
+            if ~self.HasDefinedInputs()
                 inpts = [];
+            else
+                inpts = unique([...
+                    self.GetNSTInputs(),...
+                    self.GetANSTInputs(),...
+                    self.GetErrorInputs()]);
+            end
+        end
+        
+        %% GetNSTInputs(self)
+        % This function retrieves a list of inputs from all NSTs.
+        
+        function inpts = GetNSTInputs(self)
+            if ~self.HasDefinedNSTs()
+                inpts = [];
+            else
+                inpts = self.fs(:,2)';
+            end
+        end
+        
+        %% GetANSTInputs(self)
+        % This function retrieves a list of inputs from all ANSTs.
+        
+        function inpts = GetANSTInputs(self)
+            if ~self.HasDefinedANSTs()
+                inpts = [];
+            else
+                inpts = self.afs(:,1)';
+            end
+        end
+        
+        %% GetErrorInputs(self)
+        % This function retrieves a list of inputs from all error
+        % functions.
+        
+        function inpts = GetErrorInputs(self)
+            if ~self.HasDefinedErrorFcns()
+                inpts = [];
+            else
+                inpts = self.f_error(:,1)';
             end
         end
         
         %% GetNextStates(self)
-        
-        %TODO: Add description of GetNextStates
-        
-        %FIXME: Extend GetNextStates to account for ANSTs and ENSTs
+        % Gets all next states defined for the state machine. Used to
+        % determine states that cannot be reached.
         
         function next_states = GetNextStates(self)
-            if self.HasDefinedNSTs()
-                next_states = unique(self.fs(:,3));
-            else
+            next_states = unique(...
+                [self.GetNextNSTStates(),...
+                self.GetNextANSTStates(),...
+                self.GetNextErrorStates()]);
+        end
+        
+        %% GetNextNSTStates(self)
+        % Retrieves the next states deefined for regular NSTs.
+        function next_states = GetNextNSTStates(self)
+            if ~self.HasDefinedNSTs()
                 next_states = [];
+            else
+                next_states = (unique(self.fs(:,3)))';
+            end
+        end
+        %% GetNextANSTStates(self)
+        % Retrieves the next states deefined for ANSTs.
+        function next_states = GetNextANSTStates(self)
+            if ~self.HasDefinedANSTs()
+                next_states = [];
+            else
+                next_states = (unique(self.afs(:,2)))';
             end
         end
         
-        
-        %% GetOutputs(self)
-        
-        %TODO: Finish description of GetOutputs
-        
-        function outputs = GetOutputs(self)
-            if self.HasDefinedOutputFcns()
-                outputs = unique(self.fo(:,2));
+        %% GetNextErrorStates(self)
+        % Retrieves the next states deefined for error transitions.
+        function next_states = GetNextErrorStates(self)
+            if ~self.HasDefinedErrorFcns()
+                next_states = [];
             else
+                next_states = (unique(self.f_error(:,2)))';
+            end
+        end
+        
+        %% GetAllOutputs(self)
+        % Gets all outputs that have been defined
+        
+        function outputs = GetAllOutputs(self)
+            if ~self.HasDefinedOutputFcns()
                 outputs = [];
+            else
+                outputs = unique(...
+                    [self.GetUsedOutputs(),...
+                    self.O_defined]);
+            end
+        end
+        
+        %% GetUsedOutputs(self)
+        %Gets a list of outputs that are being used.
+        
+        function outputs = GetUsedOutputs(self)
+            if ~self.HasDefinedOutputFcns()
+                outputs = [];
+            else
+                outputs = (unique(self.fo(:,2)))';
             end
         end
         
         %% GetReachableStates(self)
-        
-        %TODO: Finish description of GetReachableStates
+        % Returns a list of states that are either initial states or next
+        % states.
         
         function states = GetReachableStates(self)
             init_states = self.GetInitialStates();
             next_states = self.GetNextStates();
-            states = union(init_states, next_states,'rows');
+            states = union(init_states, next_states);
         end
         
         %% GetUnreachableStates(self)
-        
-        %TODO: Finish description of GetUnreachableStates
+        % Returns a list of explicitly defined states that are not initial
+        % states or next states.
         function states = GetUnreachableStates(self)
-            states = setdiff(self.s_defined, self.GetReachableStates);
+            if ~self.HasDefinedStates
+                states = [];
+            else
+                states = setdiff(self.s_defined, self.GetReachableStates);
+            end
         end
         
         
         %% GetUnusedInputs(self)
-        
-        %FIXME: Extend definition of GetUnusedInputs to account for ANSTs
-        % and ENSTs.
-        
+        % Returns a list of unused inputs.
         function states = GetUnusedInputs(self)
-            states = setdiff(self.I_defined, self.GetInputs);
+            if self.hasDefinedStates()
+                states = setdiff(self.I_defined, self.GetUsedInputs());
+            end
         end
         
         %% GetUnusedOutputs(self)
-        
-        %FIXME: Define getUnusedOutputs in a more robust fashion.
-        
-        function states = GetUnusedOutputs(self)
-            states = [];
+        % Returns a list of unused outputs.
+        function outputs = GetUnusedOutputs(self)
+            if ~self.HasDefinedOutputs()
+                outputs = [];
+            else
+                outputs = setdiff(self.O_defined, self.GetUsedOutputs());
+            end
         end
         
         %%
