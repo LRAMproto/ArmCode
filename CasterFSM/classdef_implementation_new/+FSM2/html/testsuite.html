@@ -1,0 +1,493 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>testsuite</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-08-27"><meta name="DC.source" content="testsuite.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> testsuite()
+<span class="comment">% Persistant States</span>
+shared.states.stop = 0;
+shared.states.go = 1;
+shared.states.slow = 2;
+
+shared.outputs.stop = 7;
+shared.outputs.go = 8;
+shared.outputs.slow = 9;
+
+<span class="comment">% Persistant inpts;</span>
+shared.inputs.change = 0;
+shared.inputs.err = 4;
+<span class="comment">% Persistent Outputs</span>
+shared.outputs.change = 0;
+shared.outputs.err = 0;
+
+test1(shared);
+test2(shared);
+test3(shared);
+test4(shared);
+
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> test1(shared)
+disp(<span class="string">'TEST 1: A STOPLIGHT'</span>);
+
+stoplight = FSM2.StateMachine();
+
+stoplight.AddState([shared.states.stop, shared.states.go, shared.states.go,999]);
+stoplight.AddInput([shared.inputs.change, shared.inputs.err]);
+stoplight.AddOutput([shared.outputs.change, shared.outputs.err]);
+
+stoplight.AddOutputFcn([shared.states.stop, shared.outputs.stop]);
+stoplight.AddOutputFcn([shared.states.go, shared.outputs.go]);
+stoplight.AddOutputFcn([shared.states.slow, shared.outputs.slow]);
+
+stoplight.AddNST(<span class="keyword">...</span>
+    [shared.states.stop,<span class="keyword">...</span>
+    shared.inputs.change,<span class="keyword">...</span>
+    shared.states.go<span class="keyword">...</span>
+    ]<span class="keyword">...</span>
+    );
+stoplight.AddNST(<span class="keyword">...</span>
+    [shared.states.go,<span class="keyword">...</span>
+    shared.inputs.change,<span class="keyword">...</span>
+    shared.states.slow<span class="keyword">...</span>
+    ]<span class="keyword">...</span>
+    );
+stoplight.AddNST(<span class="keyword">...</span>
+    [shared.states.slow,<span class="keyword">...</span>
+    shared.inputs.change,<span class="keyword">...</span>
+    shared.states.stop<span class="keyword">...</span>
+    ]<span class="keyword">...</span>
+    );
+
+stoplight.Initialize(shared.states.stop);
+
+disp(stoplight);
+stoplight.SendInput(shared.inputs.change);
+assert(stoplight.GetCurrentState == shared.states.go)
+disp(stoplight);
+stoplight.SendInput(shared.inputs.change);
+assert(stoplight.GetCurrentState == shared.states.slow)
+
+disp(stoplight);
+stoplight.SendInput(shared.inputs.err);
+assert(stoplight.GetCurrentState == shared.states.slow)
+
+disp(stoplight);
+disp(<span class="string">'*****'</span>);
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> test2(shared)
+    disp(<span class="string">'TEST 2: EXAMPLE 16'</span>);
+    S = [0,1,2];
+    I = [0,1];
+    O = [0,1];
+
+    M = FSM2.StateMachine();
+    disp(M);
+
+    M.AddState(S);
+    M.AddInput(I);
+    M.AddOutput(O);
+    disp(M);
+
+    stPresentInpt = [0 1];
+    stateTable = [<span class="keyword">...</span>
+        [0 1 0 0];<span class="keyword">...</span>
+        [1 2 1 1];<span class="keyword">...</span>
+        [2 2 0 1];<span class="keyword">...</span>
+        ];
+    M.AddStateTable(stPresentInpt, stateTable);
+    disp(M);
+
+    disp(M);
+
+    disp(<span class="string">'** PART 1'</span>);
+    M.Initialize(0);
+    outputSequence = M.SendInputSequence([0 1 1 0 1]);
+    disp(outputSequence);
+    disp(M);
+    disp(<span class="string">'** PART 2'</span>);
+    M.Initialize(0);
+    outputSequence = M.SendInputSequence([1 0 1 0]);
+    disp(outputSequence);
+    disp(M);
+
+<span class="comment">%     M.Initialize(0);</span>
+<span class="comment">%     outputSequence = M.SendInputSequence([1 1 0 0 1]);</span>
+<span class="comment">%     disp(outputSequence);</span>
+<span class="comment">%     disp(M);</span>
+disp(<span class="string">'*****'</span>);
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> test3(shared)
+    disp(<span class="string">'TEST 3:'</span>);
+    M = FSM2.StateMachine();
+    stPresentInpt = [0 1 2];
+    stateTable = [<span class="keyword">...</span>
+        [0 0 1 1 0];<span class="keyword">...</span>
+        [1 1 0 0 1];<span class="keyword">...</span>
+        ];
+    M.AddStateTable(stPresentInpt, stateTable);
+    disp(M);
+    disp(<span class="string">'*****'</span>);
+
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> test4(shared)
+    M = FSM2.StateMachine();
+    stPresentInpt = [0 1 2];
+    stateTable = [<span class="keyword">...</span>
+        [0 0 1 1 0];<span class="keyword">...</span>
+        [1 1 0 0 1];<span class="keyword">...</span>
+        ];
+
+    M.AddStateTable(stPresentInpt,stateTable);
+    M.Initialize(0);
+
+    disp(M);
+    disp(<span class="string">'*****'</span>);
+
+    outputSequence = M.SendInputSequence([2 1 1 0]);
+    disp(outputSequence);
+
+    disp(M);
+
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> change()
+    fprintf(<span class="string">'Changing...\n'</span>);
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> err()
+    fprintf(<span class="string">'What have you done?\n'</span>);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">TEST 1: A STOPLIGHT
+State Machine:
+	Current State (si):	0
+	Init State (s0):	0
+	Reachable States (S):	0, 1, 2, 
+	Input Symbols (I):	0, 
+	Output Symbols (O):	
+	Unreachable States:	999, 
+	Unused Inputs:	4, 
+State Machine:
+	Current State (si):	1
+	Init State (s0):	0
+	Reachable States (S):	0, 1, 2, 
+	Input Symbols (I):	0, 
+	Output Symbols (O):	
+	Unreachable States:	999, 
+	Unused Inputs:	4, 
+State Machine:
+	Current State (si):	2
+	Init State (s0):	0
+	Reachable States (S):	0, 1, 2, 
+	Input Symbols (I):	0, 
+	Output Symbols (O):	
+	Unreachable States:	999, 
+	Unused Inputs:	4, 
+State Machine:
+	Current State (si):	2
+	Init State (s0):	0
+	Reachable States (S):	0, 1, 2, 
+	Input Symbols (I):	0, 
+	Output Symbols (O):	
+	Unreachable States:	999, 
+	Unused Inputs:	4, 
+*****
+TEST 2: EXAMPLE 16
+State Machine:
+	Current State (si):	-1
+	Init State (s0):	-1
+	Reachable States (S):	
+	Input Symbols (I):	
+	Output Symbols (O):	
+	Unreachable States:	-3, -2, -1, 
+	Unused Inputs:	-3, -2, -1, 
+State Machine:
+	Current State (si):	-1
+	Init State (s0):	-1
+	Reachable States (S):	
+	Input Symbols (I):	-1, 2, 
+	Output Symbols (O):	
+	Unreachable States:	0, 1, 2, 
+	Unused Inputs:	0, 1, 
+State Machine:
+	Current State (si):	-1
+	Init State (s0):	-1
+	Reachable States (S):	0, 1, 2, 
+	Input Symbols (I):	0, 1, 
+	Output Symbols (O):	
+State Machine:
+	Current State (si):	-1
+	Init State (s0):	-1
+	Reachable States (S):	0, 1, 2, 
+	Input Symbols (I):	0, 1, 
+	Output Symbols (O):	
+** PART 1
+     0     1     1     1     1     0
+State Machine:
+	Current State (si):	0
+	Init State (s0):	0
+	Reachable States (S):	0, 1, 2, 
+	Input Symbols (I):	0, 1, 
+	Output Symbols (O):	
+** PART 2
+     0     0     1     1     1
+State Machine:
+	Current State (si):	2
+	Init State (s0):	0
+	Reachable States (S):	0, 1, 2, 
+	Input Symbols (I):	0, 1, 
+	Output Symbols (O):	
+*****
+TEST 3:
+State Machine:
+	Current State (si):	-1
+	Init State (s0):	-1
+	Reachable States (S):	0, 1, 
+	Input Symbols (I):	
+	Output Symbols (O):	
+	Unused Inputs:	-3, -2, -1, 
+*****
+State Machine:
+	Current State (si):	0
+	Init State (s0):	0
+	Reachable States (S):	0, 1, 
+	Input Symbols (I):	
+	Output Symbols (O):	
+	Unused Inputs:	-3, -2, -1, 
+*****
+     0     1     0     1     1
+State Machine:
+	Current State (si):	1
+	Init State (s0):	0
+	Reachable States (S):	0, 1, 
+	Input Symbols (I):	
+	Output Symbols (O):	
+	Unused Inputs:	-3, -2, -1, 
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function testsuite()
+% Persistant States
+shared.states.stop = 0;
+shared.states.go = 1;
+shared.states.slow = 2;
+
+shared.outputs.stop = 7;
+shared.outputs.go = 8;
+shared.outputs.slow = 9;
+
+% Persistant inpts;
+shared.inputs.change = 0;
+shared.inputs.err = 4;
+% Persistent Outputs
+shared.outputs.change = 0;
+shared.outputs.err = 0;
+
+test1(shared);
+test2(shared);
+test3(shared);
+test4(shared);
+
+end
+
+function test1(shared)
+disp('TEST 1: A STOPLIGHT');
+
+stoplight = FSM2.StateMachine();
+
+stoplight.AddState([shared.states.stop, shared.states.go, shared.states.go,999]);
+stoplight.AddInput([shared.inputs.change, shared.inputs.err]);
+stoplight.AddOutput([shared.outputs.change, shared.outputs.err]);
+
+stoplight.AddOutputFcn([shared.states.stop, shared.outputs.stop]);
+stoplight.AddOutputFcn([shared.states.go, shared.outputs.go]);
+stoplight.AddOutputFcn([shared.states.slow, shared.outputs.slow]);
+
+stoplight.AddNST(...
+    [shared.states.stop,...
+    shared.inputs.change,...
+    shared.states.go...
+    ]...
+    );
+stoplight.AddNST(...
+    [shared.states.go,...
+    shared.inputs.change,...
+    shared.states.slow...
+    ]...
+    );
+stoplight.AddNST(...
+    [shared.states.slow,...
+    shared.inputs.change,...
+    shared.states.stop...
+    ]...
+    );
+
+stoplight.Initialize(shared.states.stop);
+
+disp(stoplight);
+stoplight.SendInput(shared.inputs.change);
+assert(stoplight.GetCurrentState == shared.states.go)
+disp(stoplight);
+stoplight.SendInput(shared.inputs.change);
+assert(stoplight.GetCurrentState == shared.states.slow)
+
+disp(stoplight);
+stoplight.SendInput(shared.inputs.err);
+assert(stoplight.GetCurrentState == shared.states.slow)
+
+disp(stoplight);
+disp('*****');
+end
+
+function test2(shared)
+    disp('TEST 2: EXAMPLE 16');
+    S = [0,1,2];
+    I = [0,1];
+    O = [0,1];
+    
+    M = FSM2.StateMachine();
+    disp(M);
+    
+    M.AddState(S);
+    M.AddInput(I);
+    M.AddOutput(O);
+    disp(M);
+    
+    stPresentInpt = [0 1];
+    stateTable = [...
+        [0 1 0 0];...
+        [1 2 1 1];...
+        [2 2 0 1];...        
+        ];
+    M.AddStateTable(stPresentInpt, stateTable);
+    disp(M);
+    
+    disp(M);
+    
+    disp('** PART 1');
+    M.Initialize(0);
+    outputSequence = M.SendInputSequence([0 1 1 0 1]);    
+    disp(outputSequence);
+    disp(M);
+    disp('** PART 2');    
+    M.Initialize(0);
+    outputSequence = M.SendInputSequence([1 0 1 0]);    
+    disp(outputSequence);
+    disp(M);
+    
+%     M.Initialize(0);
+%     outputSequence = M.SendInputSequence([1 1 0 0 1]);    
+%     disp(outputSequence);
+%     disp(M);
+disp('*****');    
+end
+
+function test3(shared)
+    disp('TEST 3:');
+    M = FSM2.StateMachine();    
+    stPresentInpt = [0 1 2];
+    stateTable = [...
+        [0 0 1 1 0];...
+        [1 1 0 0 1];...
+        ];
+    M.AddStateTable(stPresentInpt, stateTable);
+    disp(M);
+    disp('*****');
+    
+end
+
+function test4(shared)
+    M = FSM2.StateMachine();
+    stPresentInpt = [0 1 2];
+    stateTable = [...
+        [0 0 1 1 0];...
+        [1 1 0 0 1];...
+        ];
+    
+    M.AddStateTable(stPresentInpt,stateTable);
+    M.Initialize(0);
+    
+    disp(M);
+    disp('*****');
+    
+    outputSequence = M.SendInputSequence([2 1 1 0]);    
+    disp(outputSequence);
+    
+    disp(M);        
+
+end
+
+function change()
+    fprintf('Changing...\n');
+end
+
+function err()
+    fprintf('What have you done?\n');
+end
+
+##### SOURCE END #####
+--></body></html>
