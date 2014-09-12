@@ -22,15 +22,15 @@
  * Check Dialog Parameters:
  * 
  */
-    /* Check Initial State*/
+    /* Check Initial State */
 
     /* Check Output Functions */
 
-    /*Check that NSTs are valid*/
+    /* Check that NSTs are valid */
 
-    /*Check that ANSTs are valid*/
+    /* Check that ANSTs are valid */
 
-    /*Check that ENSTs are valid*/
+    /* Check that ENSTs are valid */
 
     /*END CHECK DIALOG PRMS*/
 
@@ -92,3 +92,6 @@
  */
 
 /*END TERMINATE*/
+
+/*Required S-Function Trailer*/
+/*END TRAILER*/
