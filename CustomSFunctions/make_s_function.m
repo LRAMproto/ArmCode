@@ -1,35 +1,43 @@
 function make_s_function(fileName)
+
 % 1) Capture old directory.
 oldDirectory = pwd;
-
-% 2) CD To this directory. 3) Compile based on what OS is being used and
-[filePath, ~, fileExt] = fileparts(mfilename('fullpath'));
-
-cd(fileparts(filePath));
-
-% check if file exists.
-if exist(fileName, 'file') ~= 2
-    error(['File "',fileName,'" does not appear to exist.']);
-end
-
-if ispc
-    compileForWindows(fileName)
+try
     
-elseif isunix
-    % Linux-based compiling instructions . There is no
-    % linux-based XPC Target machine (yet), but this is helpful to include
-    % seperately for testing purposes on a Linux computer.
+    % 2) CD To this directory. 3) Compile based on what OS is being used and
+    [filePath, ~, ~] = fileparts(mfilename('fullpath'));
     
-    compileForLinux(fileName)
+    cd(fileparts(filePath));
     
-elseif ismac
-    warning(...
-        ['Compiling has not been explicitly developed ', ...
-        'for the OSx platform. Use this at your own risk.\n']);
+    % check if file exists.
+    if exist(fileName, 'file') ~= 2
+        error(['File "',fileName,'" does not appear to exist.']);
+    end
     
-    compileForLinux(fileName)
-else
-    error('Unknown operating system.');
+    if ispc
+        compileForWindows(fileName)
+        
+    elseif isunix
+        % Linux-based compiling instructions . There is no
+        % linux-based XPC Target machine (yet), but this is helpful to include
+        % seperately for testing purposes on a Linux computer.
+        
+        compileForLinux(fileName)
+        
+    elseif ismac
+        warning(...
+            ['Compiling has not been explicitly developed ', ...
+            'for the OSx platform. Use this at your own risk.\n']);
+        
+        compileForLinux(fileName)
+    else
+        error('Unknown operating system.');
+    end
+    
+catch exception
+    cd(oldDirectory);
+    rethrow(exception)
+    
 end
 
 % Return to old directory when compiling is complete, because MATLAB
